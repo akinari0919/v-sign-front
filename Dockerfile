@@ -6,3 +6,9 @@ WORKDIR $APP_HOME
 
 RUN yarn global add @vue/cli
 COPY package.json .
+
+COPY . .
+
+RUN yarn run build
+
+EXPOSE ${CONTAINER_PORT}
