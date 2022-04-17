@@ -3,6 +3,5 @@ build:
     web: Dockerfile
   config:
     WORKDIR: app
-    VUE_APP_API_URL: "https://v-sing-api.herokuapp.com"
 run:
   web: yarn run start
