@@ -6,3 +6,8 @@ WORKDIR $APP_HOME
 
 RUN yarn global add @vue/cli
 COPY package.json .
+RUN yarn install
+
+COPY . .
+
+RUN yarn build

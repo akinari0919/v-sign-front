@@ -21,6 +21,8 @@
 <script>
 import axios from 'axios';
 
+const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
+
 export default {
   data () {
     return {
@@ -30,7 +32,7 @@ export default {
 
   created () {
     axios
-      .get(process.env.VUE_APP_API_URL)
+      .get(`${url}/v1/signs`)
       .then( response => {
         this.name = response.data.signs[0].name //signs
       })
