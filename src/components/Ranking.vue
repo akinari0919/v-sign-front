@@ -32,7 +32,7 @@ export default {
 
   created () {
     axios
-      .get(process.env.VUE_APP_API_URL)
+      .get(`${process.env.VUE_APP_API_URL}/v1/signs` || 'https://peace-sign.herokuapp.com/v1/sings')
       .then( response => {
         this.name = response.data.signs[0].name //signs
       })
