@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "core-js": "^3.8.3",
+    "express": "^4.17.3",
     "vue": "^2.6.14",
     "vuetify": "^2.6.0"
   },
@@ -26,6 +27,13 @@
     "vue-cli-plugin-vuetify": "~2.4.8",
     "vue-template-compiler": "^2.6.14",
     "vuetify-loader": "^1.7.0"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "postinstall": "yarn build",
+    "start": "node server.js"
   },
   "eslintConfig": {
     "root": true,
