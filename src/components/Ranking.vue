@@ -21,9 +21,8 @@
 <script>
 import axios from 'axios';
 
-console.log(process.env.VUE_APP_API_URL)
-
 const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
+
 export default {
   data () {
     return {
