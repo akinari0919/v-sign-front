@@ -28,19 +28,17 @@ export default {
       if (this.sec === 1) {
         this.complete()
         document.getElementById('time').textContent = 'パシャ!!'
-        // canvasに静止画を入れる
+        // 画像データの格納
         const canvas = document.getElementById("canvas")
-        canvas.getContext("2d").drawImage(video, 0, 0, 300, 300)
-        const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '');
-        console.log(base64)
-
-        console.log(angle.textContent)
+        const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '')
+        // 角度データの格納
+        const angle = document.getElementById("angle").textContent
 
         axios
           .post(`${url}/v1/signs`, {
             name: "test3",
             image: base64,
-            angle: angle.textContent,
+            angle: angle,
             type: 0
           })
           .then( response => {
