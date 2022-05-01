@@ -97,7 +97,7 @@
           href: '#',
         },
       ],
-     measure: [
+      measure: [
         {
           text: 'Peace sign',
           href: '#',
@@ -116,3 +116,4 @@
     }),
   }
 </script>
+
