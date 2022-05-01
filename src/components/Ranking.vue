@@ -17,18 +17,18 @@
         <table id="table" border="1">
           <thead>
             <tr>
-              <th>順位</th>
-              <th>投稿者</th>
-              <th>角度</th>
-              <th>✌️画像</th>
+              <th width="80">順位</th>
+              <th width="160">投稿者</th>
+              <th width="100">角度</th>
+              <th width="160">✌️画像</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(sign, index) in signs" :key="index">
               <td>{{ index + 1 }}位</td>
               <td>{{ sign.name }}</td>
-              <td>{{ sign.angle }}°</td>
-              <td>{{ sign.image }}</td>
+              <td>{{ sign.angle.toFixed(2) }}°</td>
+              <td><img :src="'data:image/jpeg;base64,' + sign.image" width="100" height="100"/></td>
             </tr>
           </tbody>
         </table>

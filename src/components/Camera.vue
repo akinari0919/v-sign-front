@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <v-row class="text-center mb-3">
-      <v-col class="mb-4">
+    <v-row class="text-center">
+      <v-col>
         <h1 class="display-1 font-weight-bold mb-3">
           測る
         </h1>
@@ -12,6 +12,7 @@
 
         <!-- 非表示 -->
         <video
+          id="video"
           class="input_video"
           ref="input_video"
         />
@@ -24,10 +25,11 @@
         </p>
 
         <p id="angle" class="font-weight-regular">
-          カウント
+          角度を表示
         </p>
 
         <canvas
+          id="canvas"
           class="output_canvas mb-3"
           ref="output_canvas"
           :width="width"
@@ -195,7 +197,7 @@ export default {
 
             // 表示
             const element = document.getElementById("angle")
-            element.textContent = `${angle.toFixed(1)}°`
+            element.textContent = `${angle.toFixed(2)}°`
           }
         }
       }

@@ -5,6 +5,7 @@
     <v-main>
       <PeaceSign/>
       <Camera/>
+      <Timer/>
       <Ranking/>
     </v-main>
   </v-app>
@@ -14,6 +15,7 @@
 import Header from './components/Header';
 import PeaceSign from './components/PeaceSign';
 import Camera from './components/Camera';
+import Timer from './components/Timer';
 import Ranking from './components/Ranking';
 
 export default {
@@ -23,6 +25,7 @@ export default {
     Header,
     PeaceSign,
     Camera,
+    Timer,
     Ranking
   }
 }
