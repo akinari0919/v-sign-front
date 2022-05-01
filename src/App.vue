@@ -4,18 +4,17 @@
 
     <v-main>
       <PeaceSign/>
-      <Ranking/>
       <Camera/>
+      <Ranking/>
     </v-main>
-
   </v-app>
 </template>
 
 <script>
 import Header from './components/Header';
 import PeaceSign from './components/PeaceSign';
-import Ranking from './components/Ranking';
 import Camera from './components/Camera';
+import Ranking from './components/Ranking';
 
 export default {
   name: 'App',
@@ -23,8 +22,8 @@ export default {
   components: {
     Header,
     PeaceSign,
-    Ranking,
     Camera,
+    Ranking
   }
 }
 </script>

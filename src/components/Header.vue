@@ -28,7 +28,7 @@
     <v-spacer></v-spacer>
 
     <v-btn
-      href="https://github.com/akinari0919/peace-sign"
+      href="https://github.com/akinari0919/v-sign"
       target="_blank"
       text
     >

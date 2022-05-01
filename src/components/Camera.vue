@@ -1,10 +1,14 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col>
-        <h1 class="display-2 font-weight-bold mb-3">
-          カメラテスト
+    <v-row class="text-center mb-3">
+      <v-col class="mb-4">
+        <h1 class="display-1 font-weight-bold mb-3">
+          測る
         </h1>
+
+        <p class="subheading font-weight-regular">
+          Measure
+        </p>
 
         <!-- 非表示 -->
         <video
@@ -13,8 +17,10 @@
         />
         <!-- 非表示 -->
 
-        <p id="angle" class="subheading font-weight-regular">
-          Vが表示されたら角度を表示
+        <p id="angle" class="font-weight-regular">
+          カメラに✌️サインを向けて下さい。
+          <br>
+          Vが表示されている状態で3秒経過したら自動撮影します。
         </p>
 
         <canvas

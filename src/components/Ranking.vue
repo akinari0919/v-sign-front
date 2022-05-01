@@ -1,13 +1,13 @@
 <template>
   <v-container>
-    <v-row class="text-center">
+    <v-row class="text-center mb-3">
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          APIテスト
+        <h1 class="display-1 font-weight-bold mb-3">
+          ランキング
         </h1>
 
         <p class="subheading font-weight-regular">
-          API - Test
+          Ranking
         </p>
 
         <table id="table" border="1">
@@ -20,7 +20,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(sign, index) in signs">
+            <tr v-for="(sign, index) in signs" :key="index">
               <td>{{ index + 1 }}位</td>
               <td>{{ sign.name }}</td>
               <td>{{ sign.angle }}°</td>
