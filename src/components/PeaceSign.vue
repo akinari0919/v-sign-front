@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="text-center">
+    <v-row class="text-center mb-4">
       <v-col cols="12">
         <v-img
           :src="require('../assets/peace-sign-logo.webp')"
