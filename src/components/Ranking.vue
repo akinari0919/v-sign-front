@@ -2,17 +2,32 @@
   <v-container>
     <v-row class="text-center">
       <v-col class="mb-4">
-        <h1 class="font-weight-bold mb-3">
+        <h1 class="display-2 font-weight-bold mb-3">
           APIテスト
         </h1>
 
-        <p class="font-weight-regular">
+        <p class="subheading font-weight-regular">
           API - Test
         </p>
 
-        <p>
-          こんにちは、 {{ name }} さん！
-        </p>
+        <table id="table" border="1">
+          <thead>
+            <tr>
+              <th>順位</th>
+              <th>投稿者</th>
+              <th>角度</th>
+              <th>✌️画像</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(sign, index) in signs">
+              <td>{{ index + 1 }}位</td>
+              <td>{{ sign.name }}</td>
+              <td>{{ sign.angle }}°</td>
+              <td>{{ sign.image }}</td>
+            </tr>
+          </tbody>
+        </table>
       </v-col>
     </v-row>
   </v-container>
@@ -26,7 +41,7 @@ const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 export default {
   data () {
     return {
-      name: ''
+      signs: ''
     }
   },
 
@@ -34,7 +49,7 @@ export default {
     axios
       .get(`${url}/v1/signs`)
       .then( response => {
-        this.name = response.data.signs[0].name //signs
+        this.signs = response.data.signs //signs
       })
       .catch( (err) => {
         this.msg = err // エラー処理
@@ -43,3 +58,8 @@ export default {
 }
 </script>
 
+<style>
+  #table {
+    margin: auto;
+  }
+</style>

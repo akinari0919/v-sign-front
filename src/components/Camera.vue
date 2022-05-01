@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center">
       <v-col>
-        <h1 class="font-weight-bold mb-3">
+        <h1 class="display-2 font-weight-bold mb-3">
           カメラテスト
         </h1>
 
@@ -13,7 +13,7 @@
         />
         <!-- 非表示 -->
 
-        <p id="angle" class="font-weight-regular">
+        <p id="angle" class="subheading font-weight-regular">
           Vが表示されたら角度を表示
         </p>
 
@@ -191,10 +191,6 @@ export default {
 </script>
 
 <style scoped>
-div {
-  border: 1px solid red;
-}
-
 .input_video {
   display: none;
 }
