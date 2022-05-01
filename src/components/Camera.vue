@@ -17,18 +17,26 @@
         />
         <!-- 非表示 -->
 
-        <p id="angle" class="font-weight-regular">
+        <p class="font-weight-regular">
           カメラに✌️サインを向けて下さい。
           <br>
           Vが表示されている状態で3秒経過したら自動撮影します。
         </p>
 
+        <p id="angle" class="font-weight-regular">
+          カウント
+        </p>
+
         <canvas
-          class="output_canvas"
+          class="output_canvas mb-3"
           ref="output_canvas"
           :width="width"
           :height="height"
         />
+
+        <p class="font-weight-regular">
+          ** 手の全体がカメラに収まるように正面を向けると反応し易くなります **
+        </p>
       </v-col>
     </v-row>
   </v-container>
@@ -166,7 +174,7 @@ export default {
             const mcpY = cameraSize * ((marks[5].y + marks[9].y) / 2)
 
             // 描画
-            this.ctx.lineWidth = 5
+            this.ctx.lineWidth = 8
             this.ctx.strokeStyle = '#ff0'
             this.ctx.beginPath()
             this.ctx.moveTo(indexX, indexY)

@@ -23,6 +23,8 @@
       <v-col cols="12">
         <p class="font-weight-regular">
           ピースサインした時の 指が開く角度を測り 競い合ってみるサービスです。
+          <br>
+          ** 現在PC環境でのみ対応しています **
         </p>
       </v-col>
     </v-row>

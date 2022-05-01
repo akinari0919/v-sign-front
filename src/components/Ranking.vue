@@ -10,6 +10,10 @@
           Ranking
         </p>
 
+        <p class="font-weight-regular">
+          ** 表示までしばらく時間を要します **
+        </p>
+
         <table id="table" border="1">
           <thead>
             <tr>
