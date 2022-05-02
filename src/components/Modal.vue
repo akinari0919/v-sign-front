@@ -2,8 +2,9 @@
   <div id="overlay">
     <div id="content">
       <p>ランキングへ反映しますか？</p>
-      <img :src="'data:image/jpeg;base64,' + this.item.image" width="300" height="300"/>
+      <img :src="'data:image/jpeg;base64,' + item.image" width="300" height="300"/>
       <p v-model="item.angle">{{ item.angle }}</p>
+      <p>ニックネーム : {{ item.name }}</p>
 
       <div class="my-5">
         <v-btn class="mx-5" :disabled="!item.angle" @click="$emit('register')">登録</v-btn>

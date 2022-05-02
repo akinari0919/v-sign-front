@@ -5,7 +5,6 @@
     <v-main>
       <PeaceSign/>
       <Measure/>
-      <Reflect/>
       <!--
       <Timer/>
       -->
@@ -18,7 +17,6 @@
 import Header from './components/Header';
 import PeaceSign from './components/PeaceSign';
 import Measure from './components/Measure';
-import Reflect from './components/Reflect';
 // import Timer from './components/Timer';
 import Ranking from './components/Ranking';
 
@@ -29,7 +27,6 @@ export default {
     Header,
     PeaceSign,
     Measure,
-    Reflect,
     // Timer,
     Ranking
   }

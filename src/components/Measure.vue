@@ -42,6 +42,35 @@
         <p class="font-weight-regular">
           ** 手の全体をカメラに収め、正面を向けると反応し易くなります **
         </p>
+
+        <h1 class="display-1 font-weight-bold mb-3">
+          反映する
+        </h1>
+        <p class="subheading font-weight-regular">
+          Refrect
+        </p>
+        <p class="font-weight-regular">
+          反映時点でのランキング結果を確認できます。
+        </p>
+
+        <div class="width300 mb-3">
+          <v-col>
+            <v-text-field
+              v-model="item.name"
+              counter
+              maxlength="8"
+              placeholder="(必須)ニックネーム"
+            />
+          </v-col>
+        </div>
+
+        <div class="item-list mb-3">
+          <div class="shatter">
+            <v-btn :disabled="!item.name" @click="openModal(item)" >確認してランキングへ反映</v-btn>
+          </div>
+
+          <modal :item="item" v-show="showContent" @close="closeModal" />
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -50,8 +79,13 @@
 <script>
 import { Hands } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
+import Modal from './Modal.vue'
 
 export default {
+  components: {
+    Modal
+  },
+
   name: "HandModel",
 
   data: function() {
@@ -60,7 +94,9 @@ export default {
       ctx: null,
       width: null,
       height: null,
+      showContent: false,
       item: {
+        name: null,
         image: null,
         angle: '→ 角度が表示されます ←'
       }
@@ -79,6 +115,14 @@ export default {
   },
 
   methods: {
+    // モーダル
+    openModal(item) {
+      this.showContent = true
+    },
+    closeModal() {
+      this.showContent = false
+    },
+
     // MediaPipe設定
     init() {
       const hands = new Hands({
