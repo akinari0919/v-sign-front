@@ -79,7 +79,9 @@
 <script>
 import { Hands } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
-import Modal from './Modal.vue'
+import Modal from './Modal.vue';
+import axios from 'axios';
+const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 
 export default {
   components: {
@@ -116,11 +118,29 @@ export default {
 
   methods: {
     // モーダル
-    openModal(item) {
+    openModal() {
       this.showContent = true
     },
     closeModal() {
       this.showContent = false
+    },
+
+    // POST
+    register: function() {
+      axios
+        .post(`${url}/v1/signs`, {
+          name: this.name,
+          image: this.image,
+          angle: this.angle,
+          type: 0
+        })
+        .then( response => {
+          this.signs = response.data.signs //signs
+        })
+        .catch( (err) => {
+          this.msg = err // エラー処理
+        });
+      window.location.href = '/'
     },
 
     // MediaPipe設定
