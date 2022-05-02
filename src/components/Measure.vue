@@ -1,9 +1,9 @@
 <template>
   <v-container>
-    <v-row class="text-center">
-      <v-col>
+    <v-row class="text-center mb-4">
+      <v-col class="mb-3">
         <h1 class="display-1 font-weight-bold mb-3">
-          測る
+          測定する
         </h1>
 
         <p class="subheading font-weight-regular">
@@ -20,24 +20,27 @@
 
         <p class="font-weight-regular">
           カメラに✌️サインを向けて下さい。
-          <br>
-          Vが表示されている状態で3秒経過したら自動撮影します。
+        <br>
+          ** Vが表示されている間は測定され続けます **
         </p>
 
-        <p id="angle" class="font-weight-regular">
-          角度を表示
-        </p>
+        <p class="font-weight-regular">{{ item.angle }}</p>
 
         <canvas
           id="canvas"
-          class="output_canvas mb-3"
+          class="output_canvas"
           ref="output_canvas"
           :width="width"
           :height="height"
         />
+        <img
+          :src="'data:image/jpeg;base64,' + item.image"
+          width="300"
+          height="300"
+        />
 
         <p class="font-weight-regular">
-          ** 手の全体がカメラに収まるように正面を向けると反応し易くなります **
+          ** 手の全体をカメラに収め、正面を向けると反応し易くなります **
         </p>
       </v-col>
     </v-row>
@@ -57,6 +60,10 @@ export default {
       ctx: null,
       width: null,
       height: null,
+      item: {
+        image: null,
+        angle: '→ 角度が表示されます ←'
+      }
     }
   },
 
@@ -184,6 +191,10 @@ export default {
             this.ctx.lineTo(middleX, middleY)
             this.ctx.stroke()
 
+            const canvas = document.getElementById("canvas")
+            const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '')
+            this.$set(this.item, 'image', base64)
+
             // 角度算出
             const ba0 = indexX - mcpX
             const ba1 = indexY - mcpY
@@ -194,10 +205,8 @@ export default {
             const bcn = (bc0 * bc0) + (bc1 * bc1)
             const radian = Math.acos(babc / (Math.sqrt(ban * bcn)))
             const angle = radian * 180 / Math.PI
-
             // 表示
-            const element = document.getElementById("angle")
-            element.textContent = `${angle.toFixed(2)}°`
+            this.$set(this.item, 'angle', angle.toFixed(2)+'°')
           }
         }
       }
@@ -214,5 +223,10 @@ export default {
 .output_canvas {
   width: 300px;
   height: 300px;
+}
+
+.width300 {
+  width: 300px;
+  margin: 0 auto;
 }
 </style>

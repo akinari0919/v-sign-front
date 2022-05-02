@@ -4,8 +4,11 @@
 
     <v-main>
       <PeaceSign/>
-      <Camera/>
+      <Measure/>
+      <Reflect/>
+      <!--
       <Timer/>
+      -->
       <Ranking/>
     </v-main>
   </v-app>
@@ -14,8 +17,9 @@
 <script>
 import Header from './components/Header';
 import PeaceSign from './components/PeaceSign';
-import Camera from './components/Camera';
-import Timer from './components/Timer';
+import Measure from './components/Measure';
+import Reflect from './components/Reflect';
+// import Timer from './components/Timer';
 import Ranking from './components/Ranking';
 
 export default {
@@ -24,8 +28,9 @@ export default {
   components: {
     Header,
     PeaceSign,
-    Camera,
-    Timer,
+    Measure,
+    Reflect,
+    // Timer,
     Ranking
   }
 }

@@ -10,9 +10,6 @@
           Ranking
         </p>
 
-        <p class="font-weight-regular">
-          ** 表示までしばらく時間を要します **
-        </p>
 
         <table id="table" border="1">
           <thead>
@@ -28,7 +25,7 @@
               <td>{{ index + 1 }}位</td>
               <td>{{ sign.name }}</td>
               <td>{{ sign.angle.toFixed(2) }}°</td>
-              <td><img :src="'data:image/jpeg;base64,' + sign.image" width="100" height="100"/></td>
+              <td><img :src="'data:image/jpeg;base64,' + sign.image" width="150" height="150"/></td>
             </tr>
           </tbody>
         </table>
