@@ -10,7 +10,6 @@
           Ranking
         </p>
 
-
         <table id="table" border="1">
           <thead>
             <tr>
@@ -36,7 +35,6 @@
 
 <script>
 import axios from 'axios';
-
 const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 
 export default {

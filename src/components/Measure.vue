@@ -39,7 +39,7 @@
           height="300"
         />
 
-        <p class="font-weight-regular">
+        <p class="font-weight-regular mb-12">
           ** 手の全体をカメラに収め、正面を向けると反応し易くなります **
         </p>
 
@@ -57,6 +57,7 @@
         <div class="width300 mb-3">
           <v-col>
             <v-text-field
+              class="mb-5"
               v-model="item.name"
               counter
               maxlength="8"
@@ -67,10 +68,11 @@
 
         <div class="item-list mb-3">
           <div class="shatter">
-            <v-btn :disabled="!item.name" @click="openModal(item)" >確認してランキングへ反映</v-btn>
+            <v-btn :disabled="!item.name" @click="openReflect" >反映内容を確認する</v-btn>
           </div>
 
-          <modal :item="item" v-show="showContent" @close="closeModal" @register="register"/>
+          <reflect :item="item" v-show="showReflect" @close="closeReflect" @register="register" />
+          <result :item="item" :sign="sign" v-show="showResult" @toTop="closeResult" @tweet="tweet" />
         </div>
       </v-col>
     </v-row>
@@ -80,16 +82,16 @@
 <script>
 import { Hands } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
-import Modal from './Modal.vue';
+import Reflect from './Reflect.vue';
+import Result from './Result.vue';
 import axios from 'axios';
 const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 
 export default {
   components: {
-    Modal
+    Reflect,
+    Result
   },
-
-  name: "HandModel",
 
   data: function() {
     return {
@@ -97,11 +99,16 @@ export default {
       ctx: null,
       width: null,
       height: null,
-      showContent: false,
+      showReflect: false,
+      showResult: false,
       item: {
         name: null,
         image: null,
         angle: '→ 角度が表示されます ←'
+      },
+      sign: {
+        name: null,
+        angle: null
       }
     }
   },
@@ -118,15 +125,22 @@ export default {
   },
 
   methods: {
-    // モーダル
-    openModal() {
-      this.showContent = true
+    // 反映モーダル
+    openReflect() {
+      this.showReflect = true
     },
-    closeModal() {
-      this.showContent = false
+    closeReflect() {
+      this.showReflect = false
     },
 
-    // POST
+    // 結果モーダル
+    closeResult() {
+      window.location.href = '/'
+    },
+    tweet() {
+      window.location.href = '/'
+    },
+
     register: function() {
       axios
         .post(`${url}/v1/signs`, {
@@ -136,12 +150,14 @@ export default {
           type: 0
         })
         .then( response => {
-          this.signs = response.data.signs //signs
+          this.sign = response.data.sign
         })
         .catch( (err) => {
           this.msg = err // エラー処理
         });
-      window.location.href = '/'
+
+      this.showReflect = false
+      this.showResult = true
     },
 
     // MediaPipe設定
@@ -293,5 +309,9 @@ export default {
 .width300 {
   width: 300px;
   margin: 0 auto;
+}
+
+.center-input input {
+  text-align: center;
 }
 </style>

@@ -1,18 +1,17 @@
 <template>
   <div id="overlay">
     <div id="content">
-      <p>ランキングへ反映しますか？</p>
+      <h1 class="display-1 font-weight-bold mb-3">
+        結果は{{ sign.name }}/{{ sign.angle }}位でした！
+      </h1>
 
-      <div class="width300 mb-3">
-        <v-img :src="'data:image/jpeg;base64,' + item.image" width="300" height="300"/>
-      </div>
-
+      <v-img :src="'data:image/jpeg;base64,' + item.image" width="100" height="100"/>
       <p>{{ item.angle }}</p>
       <p>ニックネーム : {{ item.name }}</p>
 
       <div class="my-5">
-        <v-btn class="mx-5" :disabled="!item.image" @click="$emit('register')">登録</v-btn>
-        <v-btn class="mx-5" @click="$emit('close')">戻る</v-btn>
+        <v-btn class="mx-5" @click="$emit('tweet')">つぶやく</v-btn>
+        <v-btn class="mx-5" @click="$emit('toTop')">TOPへ</v-btn>
       </div>
     </div>
   </div>
@@ -20,8 +19,7 @@
 
 <script>
 export default {
-  name: 'Modal',
-  props: ['item'],
+  props: ['item','sign']
 }
 </script>
 
@@ -44,10 +42,5 @@ export default {
   width:50%;
   padding: 1em;
   background:#fff;
-}
-
-.width300 {
-  width: 300px;
-  margin: 0 auto;
 }
 </style>
