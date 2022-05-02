@@ -43,7 +43,8 @@
           ** 手の全体をカメラに収め、正面を向けると反応し易くなります **
         </p>
 
-        <h1 class="display-1 font-weight-bold mb-3">
+
+        <h1 class="display-1 font-weight-bold mb-3 mt-12">
           反映する
         </h1>
         <p class="subheading font-weight-regular">
