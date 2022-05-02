@@ -69,7 +69,7 @@
             <v-btn :disabled="!item.name" @click="openModal(item)" >確認してランキングへ反映</v-btn>
           </div>
 
-          <modal :item="item" v-show="showContent" @close="closeModal" />
+          <modal :item="item" v-show="showContent" @close="closeModal" @register="register"/>
         </div>
       </v-col>
     </v-row>
@@ -129,9 +129,9 @@ export default {
     register: function() {
       axios
         .post(`${url}/v1/signs`, {
-          name: this.name,
-          image: this.image,
-          angle: this.angle,
+          name: this.item.name,
+          image: this.item.image,
+          angle: this.item.angle,
           type: 0
         })
         .then( response => {
