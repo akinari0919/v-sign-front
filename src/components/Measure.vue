@@ -19,7 +19,7 @@
         <!-- 非表示 -->
 
         <p class="font-weight-regular">
-          カメラに✌️サインを向けて下さい。
+          カメラに✌️サインを向けると右側に描写されます。
         <br>
           ** Vが表示されている間は測定され続けます **
         </p>
@@ -71,8 +71,20 @@
             <v-btn :disabled="!item.name" @click="openReflect" >反映内容を確認する</v-btn>
           </div>
 
-          <reflect :item="item" v-show="showReflect" @close="closeReflect" @register="register" />
-          <result :item="item" :sign="sign" :rank="rank" :rankers="rankers" v-show="showResult" @toTop="closeResult" @tweet="tweet" />
+          <reflect :item="item"
+                   v-show="showReflect"
+                   @close="closeReflect"
+                   @register="register"
+          />
+
+          <result :item="item"
+                  :sign="sign"
+                  :rank="rank"
+                  :rankers="rankers"
+                  v-show="showResult"
+                  @toTop="closeResult"
+                  @tweet="tweet"
+          />
         </div>
       </v-col>
     </v-row>
@@ -104,7 +116,7 @@ export default {
       item: {
         name: null,
         image: null,
-        angle: '→ 角度が表示されます ←'
+        angle: '⏩ 角度が表示されます ⏪'
       },
       sign: {
         name: null,
@@ -140,7 +152,14 @@ export default {
       window.location.href = '/'
     },
     tweet() {
-      window.location.href = '/'
+      const tweetUrl = 'https://twitter.com/intent/tweet?text'
+      const angle = `${this.sign.angle}°！!`
+      const rank = `結果は${this.rank}位でした✌️`
+      const comment = 'ピースサイン競争✌️%0d〜あなたの指の角度を測定〜'
+      const hash = '&hashtags=ピースサイン競争,ピースサイン,平和'
+      window.open(`${tweetUrl}=${angle}%0d${rank}%0d%0d${comment}%0d${url}%0d${hash}`,
+               '_blank'
+               )
     },
 
     register: function() {
@@ -268,7 +287,7 @@ export default {
             const mcpY = cameraSize * ((marks[5].y + marks[9].y) / 2)
 
             // 描画
-            this.ctx.lineWidth = 8
+            this.ctx.lineWidth = 10
             this.ctx.strokeStyle = '#ff0'
             this.ctx.beginPath()
             this.ctx.moveTo(indexX, indexY)

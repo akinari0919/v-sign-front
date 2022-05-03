@@ -29,7 +29,7 @@
       </p>
 
       <div class="my-5">
-        <v-btn class="mx-5" @click="$emit('tweet')">つぶやく</v-btn>
+        <v-btn class="mx-5" target="_blank" rel="noopener noreferrer" @click="$emit('tweet')">つぶやく</v-btn>
         <v-btn class="mx-5" @click="$emit('toTop')">トップへ</v-btn>
       </div>
     </div>
