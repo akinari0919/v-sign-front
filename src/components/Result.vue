@@ -1,8 +1,9 @@
 <template>
   <div id="overlay">
     <div id="content">
-      <h1 class="display-1 font-weight-bold my-5">
-        結果は{{ rank }}<span>/{{ rankers }}</span>位でした！
+      <h1 class="display-1 font-weight-bold mb-5">
+        <span>(全{{ rankers }}位中)</span><br>
+        結果は{{ rank }}位でした！!
       </h1>
 
       <table id="table" border="1">
@@ -19,7 +20,7 @@
             <td>{{ rank }}位</td>
             <td>{{ sign.name }}</td>
             <td>{{ sign.angle }}°</td>
-            <td><v-img :src="'data:image/jpeg;base64,' + sign.image" width="150" height="150"/></td>
+            <td><img :src="sign.image" width="150" height="150"/></td>
           </tr>
         </tbody>
       </table>

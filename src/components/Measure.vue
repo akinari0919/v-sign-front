@@ -19,39 +19,59 @@
         <!-- 非表示 -->
 
         <p class="font-weight-regular">
-          カメラに✌️サインを向けると右側に描写されます。
+          カメラに✌️サインを向けてください。
         <br>
-          ** Vが表示されている間は測定され続けます **
+          ** 画面にVが表示されると自動測定されます **
         </p>
 
-        <p class="font-weight-regular">{{ item.angle }}</p>
+        <div class="mb-1">
+          <v-btn :disabled="!item.angle" @click="reset" >リセット</v-btn>
+        </div>
+        <table id="table" border="1">
+          <thead>
+            <tr>
+              <th>測定</th>
+              <th>MAX値</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{ check.angle.toFixed(2) }}°</td>
+              <td>{{ item.angle.toFixed(2) }}°</td>
+            </tr>
+            <tr>
+              <td>
+                <canvas
+                  id="canvas"
+                  class="output_canvas"
+                  ref="output_canvas"
+                  :width="width"
+                  :height="height"
+                />
+              </td>
+              <td>
+                <img
+                  :src="item.image"
+                  width="300"
+                  height="300"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-        <canvas
-          id="canvas"
-          class="output_canvas"
-          ref="output_canvas"
-          :width="width"
-          :height="height"
-        />
-        <img
-          :src="'data:image/jpeg;base64,' + item.image"
-          width="300"
-          height="300"
-        />
-
-        <p class="font-weight-regular mb-12">
-          ** 手の全体をカメラに収め、正面を向けると反応し易くなります **
+        <p class="font-weight-regular">
+          ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
-
 
         <h1 class="display-1 font-weight-bold mb-3 mt-12">
-          反映する
+          登録する
         </h1>
         <p class="subheading font-weight-regular">
-          Refrect
+          Register
         </p>
         <p class="font-weight-regular">
-          反映時点でのランキング結果を確認できます。
+          登録すると現時点でのランキング結果が確認できます。
         </p>
 
         <div class="width300 mb-3">
@@ -68,10 +88,10 @@
 
         <div class="item-list mb-3">
           <div class="shatter">
-            <v-btn :disabled="!item.name" @click="openReflect" >反映内容を確認する</v-btn>
+            <v-btn :disabled="!item.name" @click="openReflect" >内容を確認する</v-btn>
           </div>
 
-          <reflect :item="item"
+          <register :item="item"
                    v-show="showReflect"
                    @close="closeReflect"
                    @register="register"
@@ -94,20 +114,19 @@
 <script>
 import { Hands } from "@mediapipe/hands";
 import { Camera } from "@mediapipe/camera_utils";
-import Reflect from './Reflect.vue';
+import Register from './Register.vue';
 import Result from './Result.vue';
 import axios from 'axios';
 const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 
 export default {
   components: {
-    Reflect,
+    Register,
     Result
   },
 
   data: function() {
     return {
-      number: null,
       ctx: null,
       width: null,
       height: null,
@@ -115,15 +134,19 @@ export default {
       showResult: false,
       item: {
         name: null,
-        image: null,
-        angle: '⏩ 角度が表示されます ⏪'
+        image: require('../assets/peace-sign-logo.webp'),
+        angle: 0,
+        done: null
       },
       sign: {
         name: null,
         angle: null
       },
+      check: {
+        angle: 0
+      },
       rank: null,
-      rankers: null
+      rankers: null,
     }
   },
 
@@ -156,8 +179,9 @@ export default {
       const angle = `${this.sign.angle}°！!`
       const rank = `結果は${this.rank}位でした✌️`
       const comment = 'ピースサイン競争✌️%0d〜あなたの指の角度を測定〜'
-      const hash = '&hashtags=ピースサイン競争,ピースサイン,平和'
-      window.open(`${tweetUrl}=${angle}%0d${rank}%0d%0d${comment}%0d${url}%0d${hash}`,
+      const serviceUrl = 'https://www.v-sign-conpetition.com/'
+      const hash = '&hashtags=ピースサイン競争,ピースサイン'
+      window.open(`${tweetUrl}=${angle}%0d${rank}%0d%0d${comment}%0d${serviceUrl}%0d${hash}`,
                '_blank'
                )
     },
@@ -174,6 +198,7 @@ export default {
           this.sign = response.data.sign
           this.rank = response.data.rank
           this.rankers = response.data.rankers
+          this.sign.angle = this.sign.angle.toFixed(2)
         })
         .catch( (err) => {
           this.msg = err // エラー処理
@@ -223,6 +248,14 @@ export default {
       );
       this.findHands(results);
       this.ctx.restore();
+    },
+
+    // リセット
+    reset() {
+      this.check.angle = 0
+      this.item.angle = 0
+      this.item.image = require('../assets/peace-sign-logo.webp')
+      this.item.done = null
     },
 
     // 描画と測定
@@ -295,9 +328,6 @@ export default {
             this.ctx.lineTo(middleX, middleY)
             this.ctx.stroke()
 
-            const canvas = document.getElementById("canvas")
-            const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '')
-            this.$set(this.item, 'image', base64)
 
             // 角度算出
             const ba0 = indexX - mcpX
@@ -309,12 +339,20 @@ export default {
             const bcn = (bc0 * bc0) + (bc1 * bc1)
             const radian = Math.acos(babc / (Math.sqrt(ban * bcn)))
             const angle = radian * 180 / Math.PI
-            // 表示
-            this.$set(this.item, 'angle', angle.toFixed(2)+'°')
+            this.$set(this.check, 'angle', angle)
+            this.item.done = true
+
+            // MAX反映
+            if (this.check.angle > this.item.angle && this.check.angle > 10) {
+              this.$set(this.item, 'angle', angle)
+              const canvas = document.getElementById("canvas")
+              const base64 = canvas.toDataURL('image/jpeg').replace(/data:.*\/.*;base64,/, '')
+              this.$set(this.item, 'image', `data:image/jpeg;base64,${base64}`)
+            }
           }
         }
       }
-    }
+    },
   },
 };
 </script>

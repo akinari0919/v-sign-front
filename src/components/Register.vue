@@ -4,14 +4,14 @@
       <p>ランキングへ反映しますか？</p>
 
       <div class="width300 my-3">
-        <v-img :src="'data:image/jpeg;base64,' + item.image" width="300" height="300"/>
+        <v-img :src="item.image" width="300" height="300"/>
       </div>
 
-      <p>{{ item.angle }}</p>
+      <p>{{ item.angle.toFixed(2) }}°</p>
       <p>ニックネーム : {{ item.name }}</p>
 
       <div class="my-5">
-        <v-btn class="mx-5" :disabled="!item.image" @click="$emit('register')">登録</v-btn>
+        <v-btn class="mx-5" :disabled="!item.done" @click="$emit('register')">登録</v-btn>
         <v-btn class="mx-5" @click="$emit('close')">戻る</v-btn>
       </div>
     </div>
