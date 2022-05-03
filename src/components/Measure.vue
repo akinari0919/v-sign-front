@@ -72,7 +72,7 @@
           </div>
 
           <reflect :item="item" v-show="showReflect" @close="closeReflect" @register="register" />
-          <result :item="item" :sign="sign" v-show="showResult" @toTop="closeResult" @tweet="tweet" />
+          <result :item="item" :sign="sign" :rank="rank" :rankers="rankers" v-show="showResult" @toTop="closeResult" @tweet="tweet" />
         </div>
       </v-col>
     </v-row>
@@ -109,7 +109,9 @@ export default {
       sign: {
         name: null,
         angle: null
-      }
+      },
+      rank: null,
+      rankers: null
     }
   },
 
@@ -151,6 +153,8 @@ export default {
         })
         .then( response => {
           this.sign = response.data.sign
+          this.rank = response.data.rank
+          this.rankers = response.data.rankers
         })
         .catch( (err) => {
           this.msg = err // エラー処理

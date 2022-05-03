@@ -1,9 +1,9 @@
 <template>
   <div id="overlay">
-    <div id="content">
+    <div id="content" class="my-3">
       <p>ランキングへ反映しますか？</p>
 
-      <div class="width300 mb-3">
+      <div class="width300 my-3">
         <v-img :src="'data:image/jpeg;base64,' + item.image" width="300" height="300"/>
       </div>
 
