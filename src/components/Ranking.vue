@@ -13,10 +13,10 @@
         <table id="table" border="1">
           <thead>
             <tr>
-              <th width="80">順位</th>
-              <th width="160">投稿者</th>
-              <th width="100">角度</th>
-              <th width="160">✌️画像</th>
+              <th width="150">順位</th>
+              <th width="150">投稿者</th>
+              <th width="150">角度</th>
+              <th width="150">✌️画像</th>
             </tr>
           </thead>
           <tbody>

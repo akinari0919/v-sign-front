@@ -179,7 +179,7 @@ export default {
       const angle = `${this.sign.angle}°！!`
       const rank = `結果は${this.rank}位でした✌️`
       const comment = 'ピースサイン競争✌️%0d〜あなたの指の角度を測定〜'
-      const serviceUrl = 'https://www.v-sign-conpetition.com/'
+      const serviceUrl = 'https://www.peace-sign-competition.com/'
       const hash = '&hashtags=ピースサイン競争,ピースサイン'
       window.open(`${tweetUrl}=${angle}%0d${rank}%0d%0d${comment}%0d${serviceUrl}%0d${hash}`,
                '_blank'
