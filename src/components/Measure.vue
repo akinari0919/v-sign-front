@@ -68,7 +68,7 @@
           </tbody>
         </table>
 
-        <p class="body-1">
+        <p class="body-1 mt-2">
           ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
 
