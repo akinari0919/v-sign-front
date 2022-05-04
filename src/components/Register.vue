@@ -1,7 +1,7 @@
 <template>
   <div id="overlay">
     <div id="content" class="my-3">
-      <p>ランキングへ反映しますか？</p>
+      <p>ランキングへ登録しますか？</p>
 
       <div class="width300 my-3">
         <v-img :src="item.image" width="300" height="300"/>

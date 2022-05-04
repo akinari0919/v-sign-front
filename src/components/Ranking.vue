@@ -16,7 +16,7 @@
               <th width="150">順位</th>
               <th width="150">投稿者</th>
               <th width="150">角度</th>
-              <th width="150">✌️画像</th>
+              <th width="150">✌️</th>
             </tr>
           </thead>
           <tbody>
