@@ -27,14 +27,6 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn
-      href="https://github.com/akinari0919/v-sign"
-      target="_blank"
-      text
-    >
-      <span class="mr-2">GitHub</span>
-      <v-icon>mdi-open-in-new</v-icon>
-    </v-btn>
   </v-app-bar>
 </template>
 
