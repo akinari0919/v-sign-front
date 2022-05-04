@@ -14,38 +14,57 @@
           現在{{ rankers }}位まで登録されています。
         </p>
 
-        <table id="table" border="1">
-          <thead>
-            <tr>
-              <th width="150">順位</th>
-              <th width="150">投稿者</th>
-              <th width="150">角度</th>
-              <th width="150">✌️</th>
-            </tr>
-          </thead>
-          <tbody class="text-h6">
-            <tr v-for="(sign, index) in signs"
-                :key="index"
-            >
-              <td>
-                {{ index + 1 }}位
-              </td>
-              <td>
-                {{ sign.name }}
-              </td>
-              <td>
-                {{ sign.angle.toFixed(2) }}°
-              </td>
-              <td>
-                <img class="mt-2 mx-2"
-                     :src="sign.image"
-                     width="150"
-                     height="150"
-                />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="body-1 mt-8 mb-1">
+          <v-row>
+            <v-col>
+              順位
+            </v-col>
+            <v-col>
+              投稿者
+            </v-col>
+            <v-col>
+              角度
+            </v-col>
+            <v-col>
+              ピース✌️
+            </v-col>
+            <v-col>
+              投稿日
+            </v-col>
+          </v-row>
+        </div>
+
+        <v-card>
+        <div
+          class="mb-4"
+          v-for="(sign, index) in signs"
+          :key="index"
+        >
+          <v-row class="text-h6" align="center">
+            <v-col>
+              {{ index + 1 }}位
+            </v-col>
+            <v-col>
+              {{ sign.name }}
+            </v-col>
+            <v-col>
+              {{ sign.angle.toFixed(2) }}°
+            </v-col>
+            <v-col>
+              <img class="mb-1"
+                 :src="sign.image"
+                 width="150"
+                 height="150"
+              />
+            </v-col>
+            <v-col>
+              {{ sign.created_at.substr(0, 10) }}
+            </v-col>
+          </v-row>
+          <v-divider/>
+        </div>
+        </v-card>
+
       </v-col>
     </v-row>
   </v-container>
@@ -78,39 +97,7 @@ export default {
 </script>
 
 <style>
-  #table {
-    margin: auto;
-  }
-
-.home-service__contents {
-  margin-top: 20px;
-  justify-content: center;
-}
-
-.home-service__card-title {
-  text-align: center;
-  padding: 20px 10px 10px;
-}
-
-.home-service__card-img {
-  text-align: center;
-  padding: 20px;
-}
-
-.home-service__card-text {
-  padding: 10px 20px;
-}
-
-.icon--service {
-  width: 48px;
-  height: 48px;
-}
-
-.v-window {
-  height: 300px !important;
-
-  @include display_pc {
-    height: 500px !important;
-  }
+#table {
+  margin: auto;
 }
 </style>

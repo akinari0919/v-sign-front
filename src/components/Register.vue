@@ -1,37 +1,64 @@
 <template>
   <div id="overlay">
     <div id="content" class="my-3">
-      <p class="body-1">
+      <p class="text-h6 mt-3 mb-5">
         ランキングへ登録しますか？
       </p>
 
-      <div class="width300 my-3">
-        <v-img :src="item.image" width="300" height="300"/>
-      </div>
+      <v-row class="text-h5 mt-5 mb-1"
+             justify="center"
+      >
+        <v-text>
+          {{ item.angle.toFixed(2) }}°
+        </v-text>
+      </v-row>
 
-      <p>{{ item.angle.toFixed(2) }}°</p>
-      <p>ニックネーム : {{ item.name }}</p>
+      <v-row justify="center">
+        <v-card width="320px">
+        <div class="width300 my-3">
+          <v-img class="my-3"
+                 :src="item.image"
+                 width="300"
+                 height="300"
+          />
+        </div>
+        </v-card>
+      </v-row>
 
-      <div class="my-5">
-        <v-btn class="mx-5"
-               :disabled="!item.done"
-               @click="$emit('register')"
-        >
-          <v-icon>
-            mdi-pencil
-          </v-icon>
-          登録
-        </v-btn>
+      <v-row class="text-h6 mt-8 mb-1"
+             justify="center"
+      >
+        <v-text>
+          {{ item.name }}
+        </v-text>
+      </v-row>
 
-        <v-btn class="mx-5"
-          @click="$emit('close')"
-        >
-          <v-icon>
-            mdi-arrow-u-left-top-bold
-          </v-icon>
-          戻る
-        </v-btn>
-      </div>
+      <v-row class="width300 mb-3"
+             justify="center"
+      >
+        <v-col>
+          <v-btn
+            :disabled="!item.done"
+            @click="$emit('register')"
+          >
+            <v-icon>
+              mdi-pencil
+            </v-icon>
+            登録
+          </v-btn>
+        </v-col>
+
+        <v-col>
+          <v-btn
+            @click="$emit('close')"
+          >
+            <v-icon>
+              mdi-arrow-u-left-top-bold
+            </v-icon>
+            戻る
+          </v-btn>
+        </v-col>
+      </v-row>
     </div>
   </div>
 </template>
@@ -58,7 +85,7 @@ export default {
 
 #content{
   z-index:2;
-  width:50%;
+  width:500px;
   padding: 1em;
   background:#fff;
 }

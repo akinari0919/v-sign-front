@@ -9,32 +9,47 @@
         結果は{{ rank }}位でした✌️
       </h1>
 
-      <table id="table" border="1">
-        <thead>
-          <tr>
-            <th width="150">順位</th>
-            <th width="150">投稿者</th>
-            <th width="150">角度</th>
-            <th width="150">✌️</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{{ rank }}位</td>
-            <td>{{ sign.name }}</td>
-            <td>{{ sign.angle }}°</td>
-            <td>
-              <img class="mt-2 mx-2"
-                   :src="sign.image"
-                   width="150"
-                   height="150"
-              />
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <v-card class="body-1 mt-8 mb-1">
+        <v-row>
+          <v-col>
+            順位
+          </v-col>
+          <v-col>
+            投稿者
+          </v-col>
+          <v-col>
+            角度
+          </v-col>
+          <v-col class="mr-2">
+            ピース✌️
+          </v-col>
+        </v-row>
 
-      <p class="body-1 mt-5">
+      <v-divider/>
+
+      <v-row class="text-h6"
+             align="center"
+             justify="center">
+        <v-col>
+          {{ rank }}位
+        </v-col>
+        <v-col>
+          {{ sign.name }}
+        </v-col>
+        <v-col>
+          {{ sign.angle }}°
+        </v-col>
+        <v-col>
+          <img class="mt-5 mr-5"
+             :src="sign.image"
+             width="150"
+             height="150"
+          />
+        </v-col>
+      </v-row>
+        </v-card>
+
+      <p class="body-1 mt-8">
         Twitterで自慢しましょう！
       </p>
 
@@ -85,7 +100,7 @@ export default {
 
 #content {
   z-index:2;
-  width:50%;
+  width:780px;
   padding: 1em;
   background:#fff;
 }

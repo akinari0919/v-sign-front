@@ -2,6 +2,10 @@
   <v-container>
     <v-row class="text-center mb-4">
       <v-col class="mb-3">
+
+        <!------
+          測定
+        ------->
         <h1 class="display-1 font-weight-bold mb-3">
           測定する
         </h1>
@@ -34,44 +38,60 @@
             リセット
           </v-btn>
         </div>
-        <table id="table" border="1">
-          <thead>
-            <tr class="text-h6">
-              <th>測定</th>
-              <th>MAX</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="text-h6">
-              <td>{{ check.angle.toFixed(2) }}°</td>
-              <td>{{ item.angle.toFixed(2) }}°</td>
-            </tr>
-            <tr>
-              <td>
-                <canvas
+
+        <!--------
+          カメラ
+        --------->
+        <!-- 測定 -->
+        <v-row justify="center">
+          <v-card class="mx-2 my-3">
+            <v-col>
+              <v-text class="text-h6">
+                測定
+              </v-text>
+              <v-divider/>
+              <v-text class="text-h6">
+                {{ check.angle.toFixed(2) }}°
+              </v-text>
+              <v-divider/>
+              <canvas
                   id="canvas"
-                  class="output_canvas mt-2 mx-2"
+                  class="output_canvas mt-4 mx-2"
                   ref="output_canvas"
                   :width="width"
                   :height="height"
                 />
-              </td>
-              <td>
+            </v-col>
+          </v-card>
+
+          <!-- MAX -->
+          <v-card class="mx-2 my-3">
+            <v-col>
+              <v-text class="text-h6">
+                MAX
+              </v-text>
+              <v-divider/>
+              <v-text class="text-h6">
+                {{ item.angle.toFixed(2) }}°
+              </v-text>
+              <v-divider/>
                 <img
                   :src="item.image"
-                  class="mt-2 mx-2"
+                  class="mt-4 mx-2"
                   width="300"
                   height="300"
                 />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+            </v-col>
+          </v-card>
+        </v-row>
 
         <p class="body-1 mt-2">
           ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
 
+        <!------
+          登録
+        ------->
         <h1 class="display-1 font-weight-bold mb-3 mt-12">
           登録する
         </h1>
@@ -79,13 +99,14 @@
           Register
         </p>
         <p class="body-1">
-          ランキングへ反映し順位結果が確認できます。
+          ランキングへ反映し順位結果を確認できます。
         </p>
 
         <div class="width300 mb-3">
           <v-col>
             <v-text-field
               class="mb-5"
+              color="black"
               v-model="item.name"
               counter
               maxlength="8"
@@ -97,19 +118,20 @@
         <div class="item-list mb-3">
           <div class="shatter">
             <v-btn :disabled="!item.name"
-                   @click="openReflect"
+                   @click="openRegister"
             >
               <v-icon>
                 mdi-check
               </v-icon>
-              内容を確認する
+              内容を確認
             </v-btn>
           </div>
 
+          <!-- モーダル -->
           <register :item="item"
-                   v-show="showReflect"
-                   @close="closeReflect"
-                   @register="register"
+                    v-show="showRegister"
+                    @close="closeRegister"
+                    @register="register"
           />
 
           <result :item="item"
@@ -120,6 +142,7 @@
                   @toTop="closeResult"
                   @tweet="tweet"
           />
+
         </div>
       </v-col>
     </v-row>
@@ -145,7 +168,7 @@ export default {
       ctx: null,
       width: null,
       height: null,
-      showReflect: false,
+      showRegister: false,
       showResult: false,
       item: {
         name: null,
@@ -178,11 +201,11 @@ export default {
 
   methods: {
     // 反映モーダル
-    openReflect() {
-      this.showReflect = true
+    openRegister() {
+      this.showRegister = true
     },
-    closeReflect() {
-      this.showReflect = false
+    closeRegister() {
+      this.showRegister = false
     },
 
     // 結果モーダル
@@ -219,7 +242,7 @@ export default {
           this.msg = err // エラー処理
         });
 
-      this.showReflect = false
+      this.showRegister = false
       this.showResult = true
     },
 
