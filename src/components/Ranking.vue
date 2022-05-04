@@ -10,6 +10,10 @@
           Ranking
         </p>
 
+        <p class="body-1">
+          現在{{ rankers }}位まで登録されています。
+        </p>
+
         <table id="table" border="1">
           <thead>
             <tr>
@@ -40,7 +44,8 @@ const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 export default {
   data () {
     return {
-      signs: ''
+      signs: null,
+      rankers: null
     }
   },
 
@@ -48,7 +53,8 @@ export default {
     axios
       .get(`${url}/v1/signs`)
       .then( response => {
-        this.signs = response.data.signs //signs
+        this.signs = response.data.signs
+        this.rankers = response.data.rankers
       })
       .catch( (err) => {
         this.msg = err // エラー処理

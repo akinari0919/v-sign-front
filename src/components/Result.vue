@@ -2,8 +2,11 @@
   <div id="overlay">
     <div id="content">
       <h1 class="display-1 font-weight-bold mb-5">
-        <span>(全{{ rankers }}位中)</span><br>
-        結果は{{ rank }}位でした！！
+        <span>
+          (全{{ rankers }}位中)
+        </span>
+        <br>
+        結果は{{ rank }}位でした✌️
       </h1>
 
       <table id="table" border="1">
@@ -12,7 +15,7 @@
             <th width="150">順位</th>
             <th width="150">投稿者</th>
             <th width="150">角度</th>
-            <th width="150">✌️画像</th>
+            <th width="150">✌️</th>
           </tr>
         </thead>
         <tbody>
@@ -25,7 +28,7 @@
         </tbody>
       </table>
 
-      <p class="font-weight-regular mt-5">
+      <p class="body-1 mt-5">
         Twitterで自慢しましょう！
       </p>
 

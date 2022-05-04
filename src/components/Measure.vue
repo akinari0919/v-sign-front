@@ -18,7 +18,7 @@
         />
         <!-- 非表示 -->
 
-        <p class="font-weight-regular">
+        <p class="body-1">
           カメラに✌️サインを向けてください。
         <br>
           ** 画面にVが表示されると自動測定されます **
@@ -67,7 +67,7 @@
           </tbody>
         </table>
 
-        <p class="font-weight-regular">
+        <p class="body-1">
           ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
 
@@ -77,8 +77,8 @@
         <p class="subheading font-weight-regular">
           Register
         </p>
-        <p class="font-weight-regular">
-          現時点でのランキング結果が確認できます。
+        <p class="body-1">
+          ランキングへ反映し順位結果が確認できます。
         </p>
 
         <div class="width300 mb-3">

@@ -21,7 +21,7 @@
       </v-col>
 
       <v-col cols="12">
-        <p class="font-weight-regular">
+        <p class="body-1">
           ピースサインの指が開く角度で競い合ってみるサービスです。
           <br>
           (カメラの使用をONにしてご利用ください)
