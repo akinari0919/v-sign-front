@@ -9,6 +9,8 @@
       <Timer/>
       -->
       <Ranking/>
+      <Footer/>
+      <Scroll/>
     </v-main>
   </v-app>
 </template>
@@ -19,6 +21,8 @@ import PeaceSign from './components/PeaceSign';
 import Measure from './components/Measure';
 // import Timer from './components/Timer';
 import Ranking from './components/Ranking';
+import Footer from './components/Footer';
+import Scroll from './components/Scroll';
 
 export default {
   name: 'App',
@@ -28,7 +32,9 @@ export default {
     PeaceSign,
     Measure,
     // Timer,
-    Ranking
+    Ranking,
+    Footer,
+    Scroll
   }
 }
 </script>
