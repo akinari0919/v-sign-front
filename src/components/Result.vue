@@ -23,7 +23,13 @@
             <td>{{ rank }}位</td>
             <td>{{ sign.name }}</td>
             <td>{{ sign.angle }}°</td>
-            <td><img :src="sign.image" width="150" height="150"/></td>
+            <td>
+              <img class="mt-2 mx-2"
+                   :src="sign.image"
+                   width="150"
+                   height="150"
+              />
+            </td>
           </tr>
         </tbody>
       </table>

@@ -23,12 +23,26 @@
               <th width="150">✌️</th>
             </tr>
           </thead>
-          <tbody>
-            <tr v-for="(sign, index) in signs" :key="index">
-              <td>{{ index + 1 }}位</td>
-              <td>{{ sign.name }}</td>
-              <td>{{ sign.angle.toFixed(2) }}°</td>
-              <td><img :src="sign.image" width="150" height="150"/></td>
+          <tbody class="text-h6">
+            <tr v-for="(sign, index) in signs"
+                :key="index"
+            >
+              <td>
+                {{ index + 1 }}位
+              </td>
+              <td>
+                {{ sign.name }}
+              </td>
+              <td>
+                {{ sign.angle.toFixed(2) }}°
+              </td>
+              <td>
+                <img class="mt-2 mx-2"
+                     :src="sign.image"
+                     width="150"
+                     height="150"
+                />
+              </td>
             </tr>
           </tbody>
         </table>
@@ -67,4 +81,36 @@ export default {
   #table {
     margin: auto;
   }
+
+.home-service__contents {
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.home-service__card-title {
+  text-align: center;
+  padding: 20px 10px 10px;
+}
+
+.home-service__card-img {
+  text-align: center;
+  padding: 20px;
+}
+
+.home-service__card-text {
+  padding: 10px 20px;
+}
+
+.icon--service {
+  width: 48px;
+  height: 48px;
+}
+
+.v-window {
+  height: 300px !important;
+
+  @include display_pc {
+    height: 500px !important;
+  }
+}
 </style>

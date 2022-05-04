@@ -50,7 +50,7 @@
               <td>
                 <canvas
                   id="canvas"
-                  class="output_canvas"
+                  class="output_canvas mt-2 mx-2"
                   ref="output_canvas"
                   :width="width"
                   :height="height"
@@ -59,6 +59,7 @@
               <td>
                 <img
                   :src="item.image"
+                  class="mt-2 mx-2"
                   width="300"
                   height="300"
                 />
