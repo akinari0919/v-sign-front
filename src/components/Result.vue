@@ -30,8 +30,25 @@
       </p>
 
       <div class="my-5">
-        <v-btn class="mx-5" target="_blank" rel="noopener noreferrer" @click="$emit('tweet')">つぶやく</v-btn>
-        <v-btn class="mx-5" @click="$emit('toTop')">トップへ</v-btn>
+        <v-btn class="mx-5" 
+               target="_blank"
+               rel="noopener noreferrer"
+               @click="$emit('tweet')"
+        >
+          <v-icon>
+            mdi-twitter
+          </v-icon>
+          つぶやく
+        </v-btn>
+
+        <v-btn class="mx-5"
+               @click="$emit('toTop')"
+        >
+          <v-icon>
+            mdi-arrow-u-left-top-bold
+          </v-icon>
+          トップへ
+        </v-btn>
       </div>
     </div>
   </div>
