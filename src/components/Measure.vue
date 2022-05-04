@@ -24,18 +24,18 @@
           ** 画面にVが表示されると自動測定されます **
         </p>
 
-        <div class="mb-1">
+        <div class="mb-3">
           <v-btn :disabled="!item.angle" @click="reset" >リセット</v-btn>
         </div>
         <table id="table" border="1">
           <thead>
-            <tr>
+            <tr class="text-h6">
               <th>測定</th>
-              <th>MAX値</th>
+              <th>MAX</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr class="text-h6">
               <td>{{ check.angle.toFixed(2) }}°</td>
               <td>{{ item.angle.toFixed(2) }}°</td>
             </tr>
@@ -71,7 +71,7 @@
           Register
         </p>
         <p class="font-weight-regular">
-          登録すると現時点でのランキング結果が確認できます。
+          現時点でのランキング結果が確認できます。
         </p>
 
         <div class="width300 mb-3">
