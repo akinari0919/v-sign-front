@@ -114,7 +114,10 @@
         text
         @click="$emit('close')"
       >
-        戻る
+        <v-icon>
+          mdi-close
+        </v-icon>
+        閉じる
       </v-btn>
     </v-card-actions>
   </v-card>

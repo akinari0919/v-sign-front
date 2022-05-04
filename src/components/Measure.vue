@@ -25,7 +25,14 @@
         </p>
 
         <div class="mb-3">
-          <v-btn :disabled="!item.angle" @click="reset" >リセット</v-btn>
+          <v-btn :disabled="!item.angle"
+                 @click="reset"
+          >
+            <v-icon>
+              mdi-sync
+            </v-icon>
+            リセット
+          </v-btn>
         </div>
         <table id="table" border="1">
           <thead>
@@ -88,7 +95,14 @@
 
         <div class="item-list mb-3">
           <div class="shatter">
-            <v-btn :disabled="!item.name" @click="openReflect" >内容を確認する</v-btn>
+            <v-btn :disabled="!item.name"
+                   @click="openReflect"
+            >
+              <v-icon>
+                mdi-check
+              </v-icon>
+              内容を確認する
+            </v-btn>
           </div>
 
           <register :item="item"

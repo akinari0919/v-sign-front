@@ -3,7 +3,7 @@
     <div id="content">
       <h1 class="display-1 font-weight-bold mb-5">
         <span>(全{{ rankers }}位中)</span><br>
-        結果は{{ rank }}位でした！!
+        結果は{{ rank }}位でした！！
       </h1>
 
       <table id="table" border="1">

@@ -11,8 +11,24 @@
       <p>ニックネーム : {{ item.name }}</p>
 
       <div class="my-5">
-        <v-btn class="mx-5" :disabled="!item.done" @click="$emit('register')">登録</v-btn>
-        <v-btn class="mx-5" @click="$emit('close')">戻る</v-btn>
+        <v-btn class="mx-5"
+               :disabled="!item.done"
+               @click="$emit('register')"
+        >
+          <v-icon>
+            mdi-pencil
+          </v-icon>
+          登録
+        </v-btn>
+
+        <v-btn class="mx-5"
+          @click="$emit('close')"
+        >
+          <v-icon>
+            mdi-arrow-u-left-top-bold
+          </v-icon>
+          戻る
+        </v-btn>
       </div>
     </div>
   </div>
