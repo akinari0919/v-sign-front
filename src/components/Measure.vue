@@ -6,9 +6,11 @@
         <!------
           測定
         ------->
-        <h1 class="display-1 font-weight-bold mb-3">
+        <hl class="display-1 font-weight-bold mb-3"
+            color="#F6CECE"
+        >
           測定する
-        </h1>
+        </hl>
 
         <p class="subheading font-weight-regular">
           Measure
@@ -212,11 +214,13 @@ export default {
     closeResult() {
       window.location.href = '/'
     },
+
+    // Tweet設定
     tweet() {
       const tweetUrl = 'https://twitter.com/intent/tweet?text'
       const angle = `${this.sign.angle}°！!`
       const rank = `結果は${this.rank}位でした✌️`
-      const comment = 'ピースサイン競争✌️%0d〜あなたの指の角度を測定〜'
+      const comment = 'ピースサイン競争✌️%0d〜あなたは何度開く？〜'
       const serviceUrl = 'https://www.peace-sign-competition.com/'
       const hash = '&hashtags=ピースサイン競争,ピースサイン'
       window.open(`${tweetUrl}=${angle}%0d${rank}%0d%0d${comment}%0d${serviceUrl}%0d${hash}`,
