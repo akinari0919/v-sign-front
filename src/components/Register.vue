@@ -17,9 +17,9 @@
         <v-card width="330px">
         <div class="width300 mt-1">
           <img class="my-3"
-                 :src="item.image"
-                 width="300"
-                 height="300"
+               :src="item.image"
+               width="300"
+               height="300"
           />
         </div>
         </v-card>
