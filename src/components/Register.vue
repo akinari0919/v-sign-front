@@ -14,14 +14,14 @@
       </v-row>
 
       <v-row justify="center">
-        <v-card width="330px">
-        <div class="width300 mt-1">
-          <img class="my-3"
-               :src="item.image"
-               width="300"
-               height="300"
-          />
-        </div>
+        <v-card class="card-img">
+          <div class="width300 mt-1">
+            <img class="my-3"
+                 :src="item.image"
+                 width="300"
+                 height="300"
+            />
+          </div>
         </v-card>
       </v-row>
 
@@ -38,6 +38,7 @@
       >
         <v-col>
           <v-btn
+            class="width180"
             :disabled="!item.done"
             @click="$emit('register')"
           >
@@ -50,6 +51,7 @@
 
         <v-col>
           <v-btn
+            class="width180"
             @click="$emit('close')"
           >
             <v-icon>
@@ -98,11 +100,41 @@ export default {
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
+.card-img {
+  width: 330px;
+}
+
 .width150 {
   width: 150px;
   margin: 0 auto;
 }
 
-.my-modal {
+/* TODO:写真位置の修正  */
+@media (max-width: 768px) {
+  #content {
+    width: 90%;
+  }
+
+  .my-modal {
+    font-size: 13px;
+  }
+
+  .card-img {
+    width: 180px;
+  }
+
+  img {
+    height: 150px;
+    width: 150px;
+  }
+
+  .width300 {
+    width: 200px;
+    margin: 0 auto;
+  }
+  .width180 {
+    width: 180px;
+  }
+
 }
 </style>
