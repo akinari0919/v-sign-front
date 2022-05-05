@@ -16,7 +16,7 @@
 
         <!-- ページネーション -->
         <v-pagination
-          color="black"
+          color=#333333
           v-model="page"
           :length="length"
           :total-visible="10"
@@ -79,7 +79,7 @@
           <!-- ページネーション -->
           <v-pagination
             class="mt-12"
-            color="black"
+            color=#333333
             v-model="page"
             :length="length"
             :total-visible="10"
