@@ -61,8 +61,9 @@
                   <h3>{{ sign.angle.toFixed(2) }}°</h3>
                 </v-col>
                 <v-col>
-                  <v-card class="mb-3" >
-                    <img class="card mt-2"
+                  <!-- なぜかResultのstyleが適用される -->
+                  <v-card class="width150 mb-3" >
+                    <img class="mt-2"
                        :src="sign.image"
                        width="140"
                        height="140"
@@ -143,6 +144,11 @@
 <style scoped>
 #table {
   margin: auto;
+}
+
+width150 {
+  width: 300px;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {

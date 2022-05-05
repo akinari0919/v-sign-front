@@ -98,8 +98,8 @@ export default {
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
-.width300 {
-  width: 300px;
+.width150 {
+  width: 150px;
   margin: 0 auto;
 }
 
