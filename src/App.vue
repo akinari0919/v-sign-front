@@ -48,7 +48,7 @@ img, canvas, .my-modal {
   border-radius: 5px;
 }
 
-.container {
+.v-main {
   background:
     radial-gradient(rgba(0,128,0,0.2), 3px, transparent 4px),
     radial-gradient(rgba(0,128,0,0.2), 3px, transparent 4px),

@@ -1,10 +1,14 @@
 <template>
   <v-app-bar
     app
-    color="dark"
+    color=#333333
     dark
   >
-    <div class="d-flex align-center">
+    <v-btn class="logo-btn d-flex align-center ml-5"
+           text
+           color=#333333
+           @click="redirect"
+    >
       <v-img
         alt="PeaceSign Logo"
         class="shrink mr-2"
@@ -17,13 +21,14 @@
       <h1
         alt="PeaceSign Name"
         class="shrink mt-1 hidden-sm-and-down"
+        color=white
         contain
         min-width="100"
         width="100"
       >
        ピースサイン競争
       </h1>
-    </div>
+    </v-btn>
 
     <v-spacer></v-spacer>
 
@@ -142,6 +147,9 @@ export default {
   },
 
   methods: {
+    redirect() {
+      window.location.href = '/'
+    },
     // 利用規約
     closeService() {
       this.showService = false
@@ -157,3 +165,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+h1 {
+  color: white;
+}
+.logo-btn:hover {
+  background-color: #333333;
+}
+</style>
