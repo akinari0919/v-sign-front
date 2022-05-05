@@ -51,7 +51,7 @@
       </v-row>
         </v-card>
 
-      <p class="body-1 mt-8">
+      <p class="mt-8">
         Twitterで自慢しましょう！
       </p>
 
