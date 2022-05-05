@@ -6,11 +6,9 @@
         <!------
           測定
         ------->
-        <hl class="display-1 font-weight-bold mb-3"
-            color="#F6CECE"
-        >
+        <h1 class="display-1 font-weight-bold mb-3 mt-12">
           測定する
-        </hl>
+        </h1>
 
         <p class="subheading font-weight-regular">
           Measure
@@ -44,17 +42,17 @@
         <!--------
           カメラ
         --------->
-        <!-- 測定 -->
         <v-row justify="center">
+          <!-- 測定 -->
           <v-card class="mx-2 my-3">
             <v-col>
-              <v-text class="text-h6">
+              <div class="text-h6">
                 測定
-              </v-text>
+              </div>
               <v-divider/>
-              <v-text class="text-h6">
+              <div class="text-h6">
                 {{ check.angle.toFixed(2) }}°
-              </v-text>
+              </div>
               <v-divider/>
               <canvas
                   id="canvas"
@@ -69,13 +67,13 @@
           <!-- MAX -->
           <v-card class="mx-2 my-3">
             <v-col>
-              <v-text class="text-h6">
+              <div class="text-h6">
                 MAX
-              </v-text>
+              </div>
               <v-divider/>
-              <v-text class="text-h6">
+              <div class="text-h6">
                 {{ item.angle.toFixed(2) }}°
-              </v-text>
+              </div>
               <v-divider/>
                 <img
                   :src="item.image"

@@ -8,9 +8,9 @@
       <v-row class="text-h5 mt-5 mb-1"
              justify="center"
       >
-        <v-text>
+        <div>
           {{ item.angle.toFixed(2) }}°
-        </v-text>
+        </div>
       </v-row>
 
       <v-row justify="center">
@@ -28,9 +28,9 @@
       <v-row class="text-h6 mt-8 mb-1"
              justify="center"
       >
-        <v-text>
+        <div>
           {{ item.name }}
-        </v-text>
+        </div>
       </v-row>
 
       <v-row class="width300 mb-3"
