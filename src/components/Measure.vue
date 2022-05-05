@@ -45,7 +45,7 @@
         <v-row justify="center">
 
           <!-- 測定 -->
-          <v-card class="mx-2 my-3">
+          <v-card class="card mx-2 my-3">
             <v-col>
               <h2>
                 測定
@@ -56,19 +56,19 @@
               </h2>
               <v-divider/>
                 <v-card class="mt-3">
-              <canvas
-                  id="canvas"
-                  class="output_canvas mb-2 mt-4 mx-3"
-                  ref="output_canvas"
-                  :width="width"
-                  :height="height"
-                />
+                  <canvas
+                    id="canvas"
+                    class="output_canvas mb-2 mt-4 mx-3"
+                    ref="output_canvas"
+                    :width="width"
+                    :height="height"
+                  />
                 </v-card>
             </v-col>
           </v-card>
 
           <!-- MAX -->
-          <v-card class="mx-2 my-3">
+          <v-card class="card mx-2 my-3">
             <v-col>
               <h2>
                 MAX
@@ -419,5 +419,9 @@ export default {
 
 .center-input input {
   text-align: center;
+}
+
+.card {
+  background-color: #FFFFE0;
 }
 </style>

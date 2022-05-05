@@ -10,7 +10,7 @@
         </h1>
       </h3>
 
-      <v-card class="mt-8 mb-1">
+      <v-card class="card mt-8 mb-1">
         <v-row>
           <v-col>
             順位
@@ -40,7 +40,9 @@
           <h3>{{ sign.angle }}°</h3>
         </v-col>
         <v-col>
-          <v-card class="mt-2 mr-3" jsutify="center">
+          <v-card class="mt-2 mr-3"
+                  jsutify="center"
+          >
             <img class="mt-2 mx-2"
                :src="sign.image"
                width="150"
@@ -107,7 +109,7 @@ export default {
   background:#fff;
 }
 
-span {
-  font-size: 20px;
+.card {
+  background-color: #FFFFE0;
 }
 </style>

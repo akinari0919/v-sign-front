@@ -46,7 +46,7 @@
 
           <v-card>
             <div
-              class="mt-1 mb-4"
+              class="card mt-1 mb-4"
               v-for="(sign, index) in displayLists"
               :key="index"
             >
@@ -62,7 +62,7 @@
                 </v-col>
                 <v-col>
                   <v-card class="mb-3" >
-                    <img class="mt-2"
+                    <img class="card mt-2"
                        :src="sign.image"
                        width="140"
                        height="140"
