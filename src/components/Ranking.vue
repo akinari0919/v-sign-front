@@ -60,11 +60,13 @@
                 {{ sign.angle.toFixed(2) }}°
               </v-col>
               <v-col>
-                <img class="mb-1"
-                   :src="sign.image"
-                   width="150"
-                   height="150"
-                />
+                <v-card class="mb-3" >
+                  <img class="mt-3"
+                     :src="sign.image"
+                     width="140"
+                     height="140"
+                  />
+                </v-card>
               </v-col>
               <v-col>
                 {{ sign.created_at.substr(0, 10) }}

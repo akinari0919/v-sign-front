@@ -1,6 +1,6 @@
 <template>
   <div id="overlay">
-    <div id="content">
+    <div id="content" class="my-modal">
       <h1 class="display-1 font-weight-bold mb-5">
         <span>
           (全{{ rankers }}位中)
@@ -40,11 +40,13 @@
           {{ sign.angle }}°
         </v-col>
         <v-col>
-          <img class="mt-5 mr-5"
-             :src="sign.image"
-             width="150"
-             height="150"
-          />
+          <v-card class="mt-2 mr-3" jsutify="center">
+            <img class="mt-2 mx-2"
+               :src="sign.image"
+               width="150"
+               height="150"
+            />
+          </v-card>
         </v-col>
       </v-row>
         </v-card>

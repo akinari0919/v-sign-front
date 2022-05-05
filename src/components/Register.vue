@@ -1,6 +1,6 @@
 <template>
   <div id="overlay">
-    <div id="content" class="my-3">
+    <div id="content" class="my-modal my-3">
       <p class="text-h6 mt-3 mb-5">
         ランキングへ登録しますか？
       </p>
@@ -14,9 +14,9 @@
       </v-row>
 
       <v-row justify="center">
-        <v-card width="320px">
-        <div class="width300 my-3">
-          <v-img class="my-3"
+        <v-card width="330px">
+        <div class="width300 mt-1">
+          <img class="my-3"
                  :src="item.image"
                  width="300"
                  height="300"

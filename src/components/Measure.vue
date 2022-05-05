@@ -43,6 +43,7 @@
           カメラ
         --------->
         <v-row justify="center">
+
           <!-- 測定 -->
           <v-card class="mx-2 my-3">
             <v-col>
@@ -54,13 +55,15 @@
                 {{ check.angle.toFixed(2) }}°
               </div>
               <v-divider/>
+                <v-card class="mt-3">
               <canvas
                   id="canvas"
-                  class="output_canvas mt-4 mx-2"
+                  class="output_canvas mb-2 mt-4 mx-3"
                   ref="output_canvas"
                   :width="width"
                   :height="height"
                 />
+                </v-card>
             </v-col>
           </v-card>
 
@@ -75,12 +78,14 @@
                 {{ item.angle.toFixed(2) }}°
               </div>
               <v-divider/>
+                <v-card class="mt-3">
                 <img
                   :src="item.image"
-                  class="mt-4 mx-2"
+                  class="mb-2 mt-4 mx-3"
                   width="300"
                   height="300"
                 />
+                </v-card>
             </v-col>
           </v-card>
         </v-row>
