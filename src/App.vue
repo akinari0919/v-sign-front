@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style>
-img, v-img, canvas, .my-modal {
+img, canvas, .my-modal {
   border-radius: 10px;
 }
 </style>
