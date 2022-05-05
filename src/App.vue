@@ -48,7 +48,7 @@ img, canvas, .my-modal {
   border-radius: 5px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Yomogi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 
 h1 {
   font-family: 'Yomogi', cursive;
