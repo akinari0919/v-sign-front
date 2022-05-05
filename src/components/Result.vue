@@ -106,7 +106,15 @@ export default {
   z-index:2;
   width:780px;
   padding: 1em;
-  background:#fff;
+  background:
+    radial-gradient(rgba(0,128,0,0.1), 3px, transparent 4px),
+    radial-gradient(rgba(0,128,0,0.1), 3px, transparent 4px),
+    linear-gradient(#fff 4px, transparent 0),
+    linear-gradient(45deg, transparent 74px, transparent 75px, rgba(0,128,0,0.1) 75px, rgba(0,128,0,0.1) 76px, transparent 77px, transparent 109px),
+    linear-gradient(-45deg, transparent 75px, transparent 76px, rgba(0,128,0,0.1) 76px, rgba(0,128,0,0.1) 77px, transparent 78px, transparent 109px),
+  #fff;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
 .card {
