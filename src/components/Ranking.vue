@@ -19,6 +19,7 @@
           color="black"
           v-model="page"
           :length="length"
+          :total-visible="10"
           @input = "pageChange"
         />
 
@@ -50,7 +51,7 @@
           >
             <v-row class="text-h6" align="center">
               <v-col>
-                {{ index + 1 + rank }}位
+                {{ index + 1 + pageRank }}位
               </v-col>
               <v-col>
                 {{ sign.name }}
@@ -79,6 +80,7 @@
           color="black"
           v-model="page"
           :length="length"
+          :total-visible="10"
           @input = "pageChange"
         />
 
@@ -98,7 +100,7 @@ export default {
       signs: null,
       rankers: null,
       // ページネーション
-      rank: 0,
+      pageRank: 0,
       length: 0,
       page: 1,
       displayLists: [],
@@ -129,7 +131,7 @@ export default {
     pageChange: function(pageNumber){
       this.displayLists = this.signs.slice(this.pageSize*(pageNumber -1),
                           this.pageSize*(pageNumber))
-      this.rank = pageNumber *10 -10
+      this.pageRank = pageNumber *10 -10
     }
   }
 }
