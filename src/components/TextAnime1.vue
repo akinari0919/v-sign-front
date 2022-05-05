@@ -33,4 +33,10 @@ for co in 0 .. 12 {
     animation-delay: co * 100ms + 200ms;
   }
 }
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 100%;
+  }
+}
 </style>

@@ -16,6 +16,7 @@
 
         <!-- ページネーション -->
         <v-pagination
+          class="mb-8"
           color=#333333
           v-model="page"
           :length="length"
@@ -23,7 +24,7 @@
           @input = "pageChange"
         />
 
-        <div class="mt-8 mb-1">
+        <div class="hidden-sm-and-down">
           <v-row>
             <v-col>
                 <span class="col-title">順位</span>
@@ -45,7 +46,7 @@
 
           <v-card>
             <div
-              class="mb-4"
+              class="mt-1 mb-4"
               v-for="(sign, index) in displayLists"
               :key="index"
             >
@@ -139,8 +140,14 @@
 }
 </script>
 
-<style>
+<style scoped>
 #table {
   margin: auto;
+}
+
+@media (max-width: 768px) {
+  h3 {
+    font-size: 100%;
+  }
 }
 </style>
