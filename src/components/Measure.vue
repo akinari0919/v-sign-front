@@ -7,7 +7,7 @@
           測定
         ------->
         <h1 class="display-1 font-weight-bold mb-3 mt-12">
-          測定する
+          <span class="bgc">測定する</span>
         </h1>
 
         <p class="subheading font-weight-regular">
@@ -98,7 +98,7 @@
           登録
         ------->
         <h1 class="display-1 font-weight-bold mb-3 mt-12">
-          登録する
+          <span class="bgc">登録する</span>
         </h1>
         <p class="subheading font-weight-regular">
           Register

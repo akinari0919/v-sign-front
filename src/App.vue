@@ -43,4 +43,8 @@ export default {
 img, canvas, .my-modal {
   border-radius: 10px;
 }
+.bgc {
+  background: linear-gradient(transparent 60%, #ff05 60%);
+  border-radius: 5px;
+}
 </style>

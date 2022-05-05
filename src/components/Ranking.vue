@@ -3,7 +3,7 @@
     <v-row class="text-center mb-3">
       <v-col class="mb-4">
         <h1 class="display-1 font-weight-bold mb-3">
-          ランキング
+          <span class="bgc">ランキング</span>
         </h1>
 
         <p class="subheading font-weight-regular">
@@ -26,94 +26,94 @@
         <div class="body-1 mt-8 mb-1">
           <v-row>
             <v-col>
-              順位
-            </v-col>
-            <v-col>
-              投稿者
-            </v-col>
-            <v-col>
-              角度
-            </v-col>
-            <v-col>
-              ピース✌️
-            </v-col>
-            <v-col>
-              投稿日
-            </v-col>
-          </v-row>
-        </div>
-
-        <v-card>
-          <div
-            class="mb-4"
-            v-for="(sign, index) in displayLists"
-            :key="index"
-          >
-            <v-row class="text-h6" align="center">
-              <v-col>
-                {{ index + 1 + pageRank }}位
+                <span class="col-title">順位</span>
               </v-col>
               <v-col>
-                {{ sign.name }}
+                <span class="col-title">投稿者</span>
               </v-col>
               <v-col>
-                {{ sign.angle.toFixed(2) }}°
+                <span class="col-title">角度</span>
               </v-col>
               <v-col>
-                <v-card class="mb-3" >
-                  <img class="mt-3"
-                     :src="sign.image"
-                     width="140"
-                     height="140"
-                  />
-                </v-card>
+                <span class="col-title">ピース✌️</span>
               </v-col>
               <v-col>
-                {{ sign.created_at.substr(0, 10) }}
+                <span class="col-title">投稿日</span>
               </v-col>
             </v-row>
-            <v-divider/>
           </div>
-        </v-card>
 
-        <!-- ページネーション -->
-        <v-pagination
-          class="mt-12"
-          color="black"
-          v-model="page"
-          :length="length"
-          :total-visible="10"
-          @input = "pageChange"
-        />
+          <v-card>
+            <div
+              class="mb-4"
+              v-for="(sign, index) in displayLists"
+              :key="index"
+            >
+              <v-row class="text-h6" align="center">
+                <v-col>
+                  {{ index + 1 + pageRank }}位
+                </v-col>
+                <v-col>
+                  {{ sign.name }}
+                </v-col>
+                <v-col>
+                  {{ sign.angle.toFixed(2) }}°
+                </v-col>
+                <v-col>
+                  <v-card class="mb-3" >
+                    <img class="mt-3"
+                       :src="sign.image"
+                       width="140"
+                       height="140"
+                    />
+                  </v-card>
+                </v-col>
+                <v-col>
+                  {{ sign.created_at.substr(0, 10) }}
+                </v-col>
+              </v-row>
+              <v-divider/>
+            </div>
+          </v-card>
 
-      </v-col>
-    </v-row>
-  </v-container>
+          <!-- ページネーション -->
+          <v-pagination
+            class="mt-12"
+            color="black"
+            v-model="page"
+            :length="length"
+            :total-visible="10"
+            @input = "pageChange"
+          />
 
-</template>
+        </v-col>
+      </v-row>
+    </v-container>
 
-<script>
-import axios from 'axios';
-const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
+  </template>
 
-export default {
-  data () {
-    return {
-      signs: null,
-      rankers: null,
-      // ページネーション
-      pageRank: 0,
-      length: 0,
-      page: 1,
-      displayLists: [],
-      pageSize: 10,
-    }
-  },
+  <script>
+  import axios from 'axios';
+  const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 
-  created () {
-    axios
-      .get(`${url}/v1/signs`)
-      .then( response => {
+  export default {
+    data () {
+      return {
+        signs: null,
+        rankers: null,
+        // ページネーション
+        pageRank: 0,
+        length: 0,
+        page: 1,
+        displayLists: [],
+        pageSize: 10,
+      }
+    },
+
+    created () {
+      axios
+        .get(`${url}/v1/signs`)
+        .then( response => {
         this.signs = response.data.signs
 
         // ページネーション
