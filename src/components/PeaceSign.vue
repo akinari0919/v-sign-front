@@ -81,7 +81,7 @@ export default {
 }
 /* アニメーション中 */
 .custom-appear-active-class {
-    transition: opacity 1.5s;
+    transition: opacity 2s;
 }
 /* アニメーション終了時 */
 .custom-appear-to-class {
