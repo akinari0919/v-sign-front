@@ -47,4 +47,16 @@ img, canvas, .my-modal {
   background: linear-gradient(transparent 60%, #ff05 60%);
   border-radius: 5px;
 }
+
+.container {
+  background:
+    radial-gradient(rgba(0,128,0,0.2), 3px, transparent 4px),
+    radial-gradient(rgba(0,128,0,0.2), 3px, transparent 4px),
+    linear-gradient(#fff 4px, transparent 0),
+    linear-gradient(45deg, transparent 74px, transparent 75px, rgba(0,128,0,0.2) 75px, rgba(0,128,0,0.2) 76px, transparent 77px, transparent 109px),
+    linear-gradient(-45deg, transparent 75px, transparent 76px, rgba(0,128,0,0.2) 76px, rgba(0,128,0,0.2) 77px, transparent 78px, transparent 109px),
+  #fff;
+  background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+}
 </style>
