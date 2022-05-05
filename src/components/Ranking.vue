@@ -61,7 +61,7 @@
                 </v-col>
                 <v-col>
                   <v-card class="mb-3" >
-                    <img class="mt-3"
+                    <img class="mt-2"
                        :src="sign.image"
                        width="140"
                        height="140"
