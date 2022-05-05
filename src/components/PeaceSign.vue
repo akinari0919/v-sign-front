@@ -2,22 +2,45 @@
   <v-container>
     <v-row class="text-center mb-3">
       <v-col cols="12">
-        <v-img
-          :src="require('../assets/peace-sign-logo.webp')"
-          class="my-3"
-          contain
-          height="200"
-        />
+        <transition name="fade"
+                    appear
+                    appear-class="custom-appear-class"
+                    appear-active-class="custom-appear-active-class"
+                    appear-to-class="custom-appear-to-class"
+        >
+          <v-img
+            v-if="show"
+            :src="require('../assets/peace-sign-logo.webp')"
+            class="my-3"
+            contain
+            height="200"
+          />
+        </transition>
       </v-col>
 
       <v-col>
-        <h1 class="display-2 font-weight-bold mb-3">
-          ピースサイン競争
-        </h1>
+        <transition name="fade"
+                    appear
+                    appear-class="custom-appear-class"
+                    appear-active-class="custom-appear-active-class"
+                    appear-to-class="custom-appear-to-class"
+        >
 
-        <p class="subheading font-weight-regular">
-          Peace - Sign - Competition
-        </p>
+          <h1 class="display-2 font-weight-bold mb-3">
+            <TextAnime1 v-if="anime1"/>
+          </h1>
+        </transition>
+
+        <transition name="fade"
+                    appear
+                    appear-class="custom-appear-class"
+                    appear-active-class="custom-appear-active-class"
+                    appear-to-class="custom-appear-to-class"
+        >
+         <p class="subheading font-weight-regular">
+           Peace - Sign - Competition
+         </p>
+        </transition>
       </v-col>
 
       <v-col cols="12">
@@ -35,5 +58,33 @@
 </template>
 
 <script>
+import TextAnime1 from './TextAnime1'
+
+export default {
+  components: {
+    TextAnime1,
+  },
+  data() {
+    return {
+      show: true,
+      anime1: true
+    }
+  }
+}
+
 </script>
 
+<style scoped>
+/* アニメーション開始時 */
+.custom-appear-class {
+    opacity: 0;
+}
+/* アニメーション中 */
+.custom-appear-active-class {
+    transition: opacity 1.5s;
+}
+/* アニメーション終了時 */
+.custom-appear-to-class {
+    opacity: 1;
+}
+</style>
