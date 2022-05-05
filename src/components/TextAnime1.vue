@@ -1,7 +1,7 @@
 <template>
-  <div class="TextAnime1">
+  <h2 class="TextAnime1">
     <span v-for="(t, index) in text" :key="index" v-text="t" class="item delay-anime"/>
-  </div>
+  </h2>
 </template>
 
 <script>

@@ -1,15 +1,16 @@
 <template>
   <div id="overlay">
     <div id="content" class="my-modal">
-      <h1 class="display-1 font-weight-bold mb-5">
-        <span>
+      <h3 class="font-weight-bold mb-5">
+        <h3>
           (全{{ rankers }}位中)
-        </span>
-        <br>
-        結果は{{ rank }}位でした✌️
-      </h1>
+        </h3>
+        <h1>
+          結果は{{ rank }}位でした✌️
+        </h1>
+      </h3>
 
-      <v-card class="body-1 mt-8 mb-1">
+      <v-card class="mt-8 mb-1">
         <v-row>
           <v-col>
             順位
@@ -27,17 +28,16 @@
 
       <v-divider/>
 
-      <v-row class="text-h6"
-             align="center"
+      <v-row align="center"
              justify="center">
         <v-col>
-          {{ rank }}位
+          <h3>{{ rank }}位</h3>
         </v-col>
         <v-col>
-          {{ sign.name }}
+          <h3>{{ sign.name }}</h3>
         </v-col>
         <v-col>
-          {{ sign.angle }}°
+          <h3>{{ sign.angle }}°</h3>
         </v-col>
         <v-col>
           <v-card class="mt-2 mr-3" jsutify="center">

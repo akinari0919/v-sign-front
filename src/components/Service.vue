@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <v-card-title>
-      <span class="text-h4 mb-5">利用規約</span>
+    <v-card-title class="mb-6">
+      <h1>利用規約</h1>
     </v-card-title>
 
     <v-card-text>

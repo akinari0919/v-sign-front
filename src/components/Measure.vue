@@ -6,7 +6,7 @@
         <!------
           測定
         ------->
-        <h1 class="display-1 font-weight-bold mb-3 mt-12">
+        <h1 class="font-weight-bold mb-3 mt-12">
           <span class="bgc">測定する</span>
         </h1>
 
@@ -22,7 +22,7 @@
         />
         <!-- 非表示 -->
 
-        <p class="body-1">
+        <p>
           カメラに✌️サインを向けてください。
         <br>
           ** 画面にVが表示されると自動測定されます **
@@ -47,13 +47,13 @@
           <!-- 測定 -->
           <v-card class="mx-2 my-3">
             <v-col>
-              <div class="text-h6">
+              <h2>
                 測定
-              </div>
+              </h2>
               <v-divider/>
-              <div class="text-h6">
+              <h2>
                 {{ check.angle.toFixed(2) }}°
-              </div>
+              </h2>
               <v-divider/>
                 <v-card class="mt-3">
               <canvas
@@ -70,13 +70,13 @@
           <!-- MAX -->
           <v-card class="mx-2 my-3">
             <v-col>
-              <div class="text-h6">
+              <h2>
                 MAX
-              </div>
+              </h2>
               <v-divider/>
-              <div class="text-h6">
+              <h2>
                 {{ item.angle.toFixed(2) }}°
-              </div>
+              </h2>
               <v-divider/>
                 <v-card class="mt-3">
                 <img
@@ -90,20 +90,20 @@
           </v-card>
         </v-row>
 
-        <p class="body-1 mt-2">
+        <p>
           ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
 
         <!------
           登録
         ------->
-        <h1 class="display-1 font-weight-bold mb-3 mt-12">
+        <h1 class="font-weight-bold mb-3 mt-12">
           <span class="bgc">登録する</span>
         </h1>
         <p class="subheading font-weight-regular">
           Register
         </p>
-        <p class="body-1">
+        <p>
           ランキングへ反映し順位結果を確認できます。
         </p>
 

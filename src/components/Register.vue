@@ -1,16 +1,16 @@
 <template>
   <div id="overlay">
     <div id="content" class="my-modal my-3">
-      <p class="text-h6 mt-3 mb-5">
+      <h2 class="mt-3 mb-5">
         ランキングへ登録しますか？
-      </p>
+      </h2>
 
-      <v-row class="text-h5 mt-5 mb-1"
+      <v-row class="mt-5 mb-1"
              justify="center"
       >
-        <div>
+        <h2>
           {{ item.angle.toFixed(2) }}°
-        </div>
+        </h2>
       </v-row>
 
       <v-row justify="center">
@@ -25,12 +25,12 @@
         </v-card>
       </v-row>
 
-      <v-row class="text-h6 mt-8 mb-1"
+      <v-row class="mt-8 mb-1"
              justify="center"
       >
-        <div>
+        <h2>
           {{ item.name }}
-        </div>
+        </h2>
       </v-row>
 
       <v-row class="width300 mb-3"

@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <v-card-title>
-      <span class="text-h5">お問い合わせ</span>
+    <v-card-title class="mb-4">
+      <h3>お問い合わせ</h3>
     </v-card-title>
     <v-card-text>
       Twitter(

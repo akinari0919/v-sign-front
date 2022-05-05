@@ -48,7 +48,22 @@ img, canvas, .my-modal {
   border-radius: 5px;
 }
 
-.v-main {
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Yomogi&display=swap');
+
+h1 {
+  font-family: 'Yomogi', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(0,0,0,0.7);
+
+}
+
+#app {
+  font-family: 'Yomogi', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: rgba(0,0,0,0.7);
+
   background:
     radial-gradient(rgba(0,128,0,0.2), 3px, transparent 4px),
     radial-gradient(rgba(0,128,0,0.2), 3px, transparent 4px),
@@ -58,5 +73,6 @@ img, canvas, .my-modal {
   #fff;
   background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+
 }
 </style>

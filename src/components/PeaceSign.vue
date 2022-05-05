@@ -26,7 +26,7 @@
                     appear-to-class="custom-appear-to-class"
         >
 
-          <h1 class="display-2 font-weight-bold mb-3">
+          <h1 class="font-weight-bold mb-3">
             <TextAnime1 v-if="anime1"/>
           </h1>
         </transition>
@@ -44,7 +44,7 @@
       </v-col>
 
       <v-col cols="12">
-        <p class="body-1">
+        <p>
           ピースサインの指が開く角度で競い合ってみるサービスです。
           <br>
           (カメラの使用をONにしてご利用ください)

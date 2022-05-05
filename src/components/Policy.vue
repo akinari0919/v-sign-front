@@ -1,7 +1,7 @@
 <template>
   <v-card>
-    <v-card-title>
-      <span class="text-h4 mb-5">プライバシーポリシー</span>
+    <v-card-title class="mb-6">
+      <h1>プライバシーポリシー</h1>
     </v-card-title>
 
     <v-card-text>

@@ -2,7 +2,7 @@
   <v-container>
     <v-row class="text-center mb-3">
       <v-col class="mb-4">
-        <h1 class="display-1 font-weight-bold mb-3">
+        <h1 class="font-weight-bold mb-3">
           <span class="bgc">ランキング</span>
         </h1>
 
@@ -10,7 +10,7 @@
           Ranking
         </p>
 
-        <p class="body-1">
+        <p>
           現在{{ rankers }}位まで登録されています。
         </p>
 
@@ -23,7 +23,7 @@
           @input = "pageChange"
         />
 
-        <div class="body-1 mt-8 mb-1">
+        <div class="mt-8 mb-1">
           <v-row>
             <v-col>
                 <span class="col-title">順位</span>
@@ -49,15 +49,15 @@
               v-for="(sign, index) in displayLists"
               :key="index"
             >
-              <v-row class="text-h6" align="center">
+              <v-row align="center">
                 <v-col>
-                  {{ index + 1 + pageRank }}位
+                  <h3>{{ index + 1 + pageRank }}位</h3>
                 </v-col>
                 <v-col>
-                  {{ sign.name }}
+                  <h3>{{ sign.name }}</h3>
                 </v-col>
                 <v-col>
-                  {{ sign.angle.toFixed(2) }}°
+                  <h3>{{ sign.angle.toFixed(2) }}°</h3>
                 </v-col>
                 <v-col>
                   <v-card class="mb-3" >
@@ -69,7 +69,7 @@
                   </v-card>
                 </v-col>
                 <v-col>
-                  {{ sign.created_at.substr(0, 10) }}
+                  <h3>{{ sign.created_at.substr(0, 10) }}</h3>
                 </v-col>
               </v-row>
               <v-divider/>
