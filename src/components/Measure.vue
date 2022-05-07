@@ -260,12 +260,14 @@ export default {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
         },
       });
+
       hands.setOptions({
         maxNumHands: 1,
         modelComplexity: 1,
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5,
       });
+
       hands.onResults(this.onResults);
 
       const camera = new Camera(this.inputVideo, {
@@ -273,7 +275,8 @@ export default {
           await hands.send({ image: this.inputVideo });
         },
         width: 300,
-        height: 300
+        height: 300,
+        facingMode: "user" // フロントカメラを利用する
       });
       camera.start();
     },
@@ -397,8 +400,8 @@ export default {
           }
         }
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
