@@ -33,7 +33,7 @@
         </h2>
       </v-row>
 
-      <v-row class="width300 mb-3"
+      <v-row class="width300 mb-3 mx-12"
              justify="center"
       >
         <v-col>
