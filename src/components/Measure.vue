@@ -302,7 +302,6 @@ export default {
         },
         width: 300,
         height: 300,
-        facingMode: "user"
       });
 
       navigator.mediaDevices.getUserMedia(constraints)
