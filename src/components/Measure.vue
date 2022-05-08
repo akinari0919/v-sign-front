@@ -15,7 +15,7 @@
         </p>
 
         <!-- 非表示 -->
-        <div class="d-sm-block d-md-none">
+        <div class="input_video">
           <p>〜カメラメンテナンス中により表示してます〜</p>
           <video ref="video" autoplay playsinline width="300" height="300"/>
           <div>
@@ -295,8 +295,6 @@ export default {
       });
       camera.start();
 
-      console.log(camera)
-
       const video = this.$refs.video;
       const constraints = new Camera(this.inputVideo, {
         onFrame: async () => {
@@ -306,8 +304,6 @@ export default {
         height: 300,
         facingMode: "user"
       });
-
-      console.log(constraints)
 
       navigator.mediaDevices.getUserMedia(constraints)
       .then(stream => {
