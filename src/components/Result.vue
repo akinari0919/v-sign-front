@@ -10,8 +10,8 @@
         </h1>
       </h3>
 
-      <v-card class="card mt-8 mb-1">
-        <v-row>
+      <v-card class="card">
+        <v-row class="hidden-sm-and-down">
           <v-col>
             順位
           </v-col>
@@ -30,23 +30,23 @@
 
       <v-row align="center"
              justify="center">
-        <v-col>
+        <v-col class="hidden-sm-and-down">
           <h3>{{ rank }}位</h3>
         </v-col>
-        <v-col>
+        <v-col class="sm-col">
           <h3>{{ sign.name }}</h3>
         </v-col>
-        <v-col>
+        <v-col class="sm-col">
           <h3>{{ sign.angle }}°</h3>
         </v-col>
-        <v-col>
-          <v-card class="mt-2 mr-3"
+        <v-col class="sm-col-img">
+          <v-card class="sm-size mt-2 mr-3"
                   jsutify="center"
           >
             <img class="mt-2 mx-2"
-               :src="sign.image"
-               width="150"
-               height="150"
+                 :src="sign.image"
+                 width="150"
+                 height="150"
             />
           </v-card>
         </v-col>
@@ -57,32 +57,34 @@
         Twitterで自慢しましょう！
       </p>
 
-      <div class="my-5">
-        <v-btn class="mx-10"
-               target="_blank"
-               rel="noopener noreferrer"
-               @click="$emit('tweet')"
-        >
-          <v-icon>
-            mdi-twitter
-          </v-icon>
-          つぶやく
-        </v-btn>
+      <v-row justify="center">
+        <div class="my-5">
+            <v-btn class="mx-4"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   @click="$emit('tweet')"
+            >
+              <v-icon>
+                mdi-twitter
+              </v-icon>
+              つぶやく
+            </v-btn>
 
-        <v-btn class="mx-10"
-               @click="$emit('toTop')"
-        >
-          <v-icon>
-            mdi-arrow-u-left-top-bold
-          </v-icon>
-          トップへ
-        </v-btn>
-      </div>
+            <v-btn class="mx-4"
+                   @click="$emit('toTop')"
+            >
+              <v-icon>
+                mdi-arrow-u-left-top-bold
+              </v-icon>
+              トップへ
+            </v-btn>
+        </div>
+      </v-row>
     </div>
   </div>
 </template>
 
-<script>
+<script scoped>
 export default {
   props: ['item','sign','rank','rankers']
 }
@@ -104,7 +106,7 @@ export default {
 
 #content {
   z-index:2;
-  width:780px;
+  width: 780px;
   padding: 1em;
   background:
     radial-gradient(rgba(0,128,0,0.1), 3px, transparent 4px),
@@ -119,5 +121,33 @@ export default {
 
 .card {
   background-color: #FFFFE0;
+  margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+  #content {
+    width: 330px;
+  }
+  #content.h3 {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  .card {
+    margin-top: 0;
+  }
+  .sm-size {
+    width: 170px;
+    margin-left: 65px;
+  }
+  .sm-col-img {
+    padding-top: 0;
+  }
+  .sm-col {
+    padding-bottom: 0;
+  }
 }
 </style>

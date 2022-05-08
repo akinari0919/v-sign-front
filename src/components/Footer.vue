@@ -15,7 +15,7 @@
           <v-btn
             text
             rounded
-            class="my-2 ml-5"
+            class="my-2 mx-8"
             v-bind="attrs"
             v-on="on"
           >
@@ -37,7 +37,7 @@
           <v-btn
             text
             rounded
-            class="my-2 ml-5"
+            class="my-2 mx-8"
             v-bind="attrs"
             v-on="on"
           >
@@ -59,7 +59,7 @@
           <v-btn
             text
             rounded
-            class="my-2 ml-5"
+            class="my-2 mx-8"
             v-bind="attrs"
             v-on="on"
           >

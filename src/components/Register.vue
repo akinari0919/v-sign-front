@@ -96,6 +96,10 @@ export default {
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
+img {
+  margin-left: 15px;
+}
+
 .card-img {
   width: 330px;
 }
@@ -105,7 +109,6 @@ export default {
   margin: 0 auto;
 }
 
-/* TODO:写真位置の修正  */
 @media (max-width: 768px) {
   #content {
     width: 90%;
@@ -120,6 +123,7 @@ export default {
   }
 
   img {
+    margin: 0;
     height: 150px;
     width: 150px;
   }
@@ -131,6 +135,5 @@ export default {
   .width180 {
     width: 180px;
   }
-
 }
 </style>
