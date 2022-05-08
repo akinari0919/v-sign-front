@@ -204,7 +204,7 @@ export default {
 
   computed: {
     inputVideo() {
-      return this.$refs.input_video;
+      return this.$refs.video;
     },
   },
 
@@ -262,6 +262,7 @@ export default {
       this.showResult = true
     },
 
+
     capture () {
      const video = this.$refs.video;
      const canvas = document.getElementById("canvass").getContext("2d");
@@ -291,21 +292,22 @@ export default {
         },
         width: 300,
         height: 300,
-        ideal: "environment"
       });
       camera.start();
 
+      console.log(camera)
+
       const video = this.$refs.video;
-      const constraints = {
+      const constraints = new Camera(this.inputVideo, {
         onFrame: async () => {
           await hands.send({ image: this.inputVideo });
         },
-        video: {
-          width: 300,
-          height: 300,
-          ideal: "environment"
-        }
-      };
+        width: 300,
+        height: 300,
+        facingMode: "user"
+      });
+
+      console.log(constraints)
 
       navigator.mediaDevices.getUserMedia(constraints)
       .then(stream => {
@@ -330,12 +332,13 @@ export default {
       this.findHands(results);
       this.ctx.restore();
 
-     // const canvas = document.getElementById("canvass").getContext("2d");
-     // canvas.save();
-     // canvas.clearRect(0, 0, 300, 300);
-     // canvas.drawImage(results.image, 0, 0, 300, 300);
-     // this.findHands(results);
-     // canvas.restore();
+      const video = this.$refs.video;
+      const canvas = document.getElementById("canvass").getContext("2d");
+      canvas.save();
+      canvas.clearRect(0, 0, 300, 300);
+      canvas.drawImage(video, 0, 0, 300, 300);
+      this.findHands(results);
+      canvas.restore();
     },
 
     // リセット
@@ -457,7 +460,7 @@ export default {
 
 <style scoped>
 .input_video {
-  display: none;
+ display: none;
 }
 
 .output_canvas {
