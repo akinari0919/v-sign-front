@@ -15,6 +15,13 @@
         </p>
 
         <!-- 非表示 -->
+        <p>〜カメラメンテナンス中により表示してます〜</p>
+        <video ref="video" autoplay playsinline width="300" height="300"/>
+        <div>
+          <button v-on:click="capture()">Snap Photo</button>
+        </div>
+        <canvas id="canvass" width="300" height="300"/>
+
         <video
           id="video"
           class="input_video"
@@ -253,8 +260,14 @@ export default {
       this.showResult = true
     },
 
+    capture () {
+     const video = this.$refs.video;
+     const canvas = document.getElementById("canvass").getContext("2d");
+     canvas.drawImage(video, 0, 0, 300, 300);
+    },
     // MediaPipe設定
     init() {
+
       const hands = new Hands({
         locateFile: (file) => {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
@@ -276,15 +289,33 @@ export default {
         },
         width: 300,
         height: 300,
-        facingMode: "user" // フロントカメラを利用する
+        ideal: "environment"
       });
       camera.start();
+
+      const video = this.$refs.video;
+      const constraints = {
+        onFrame: async () => {
+          await hands.send({ image: this.inputVideo });
+        },
+        video: {
+          width: 300,
+          height: 300,
+          ideal: "environment"
+        }
+      };
+
+      navigator.mediaDevices.getUserMedia(constraints)
+      .then(stream => {
+        video.srcObject = stream;
+        video.play()
+      });
     },
 
     // 描画設定
     onResults(results) {
-      this.width = results.image.width;
-      this.height = results.image.height;
+      this.width = 300;
+      this.height = 300;
       this.ctx.save();
       this.ctx.clearRect(0, 0, results.image.width, results.image.height);
       this.ctx.drawImage(
@@ -296,6 +327,13 @@ export default {
       );
       this.findHands(results);
       this.ctx.restore();
+
+     // const canvas = document.getElementById("canvass").getContext("2d");
+     // canvas.save();
+     // canvas.clearRect(0, 0, 300, 300);
+     // canvas.drawImage(results.image, 0, 0, 300, 300);
+     // this.findHands(results);
+     // canvas.restore();
     },
 
     // リセット
@@ -375,6 +413,16 @@ export default {
             this.ctx.lineTo(mcpX, mcpY)
             this.ctx.lineTo(middleX, middleY)
             this.ctx.stroke()
+
+            // 描画
+            const canvas = document.getElementById("canvass").getContext("2d");
+            canvas.lineWidth = 10
+            canvas.strokeStyle = '#ff0'
+            canvas.beginPath()
+            canvas.moveTo(indexX, indexY)
+            canvas.lineTo(mcpX, mcpY)
+            canvas.lineTo(middleX, middleY)
+            canvas.stroke()
 
 
             // 角度算出
