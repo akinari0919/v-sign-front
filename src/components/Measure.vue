@@ -15,18 +15,20 @@
         </p>
 
         <!-- 非表示 -->
-        <p>〜カメラメンテナンス中により表示してます〜</p>
-        <video ref="video" autoplay playsinline width="300" height="300"/>
-        <div>
-          <button v-on:click="capture()">Snap Photo</button>
-        </div>
-        <canvas id="canvass" width="300" height="300"/>
+        <div class="d-sm-block d-md-none">
+          <p>〜カメラメンテナンス中により表示してます〜</p>
+          <video ref="video" autoplay playsinline width="300" height="300"/>
+          <div>
+            <button v-on:click="capture()">Snap Photo</button>
+          </div>
+          <canvas id="canvass" width="300" height="300"/>
 
-        <video
-          id="video"
-          class="input_video"
-          ref="input_video"
-        />
+          <video
+            id="video"
+            class="input_video"
+            ref="input_video"
+          />
+        </div>
         <!-- 非表示 -->
 
         <p>
