@@ -1,11 +1,8 @@
 <template>
   <v-container>
     <v-row class="text-center mb-4">
-      <v-col class="mb-3">
-
-        <!------
-          測定
-        ------->
+      <v-col>
+        <!-- 測定 -->
         <h1 class="font-weight-bold mb-3 mt-12">
           <span class="bgc">測定する</span>
         </h1>
@@ -13,6 +10,23 @@
         <p class="subheading font-weight-regular">
           Measure
         </p>
+
+        <p style="color:#CC0033"
+           v-show="!isDisplay">
+          ** カメラの使用をONにしてご利用ください **
+        </p>
+
+        <v-btn @click="cameraStart"
+               :disabled="pushedBtn"
+               v-on:click="disp"
+               v-show="!isDisplay"
+               class="mb-7"
+        >
+          <v-icon>
+            mdi-camera
+          </v-icon>
+          カメラの使用をONにする
+        </v-btn>
 
         <!-- 非表示 -->
         <div class="input_video">
@@ -31,6 +45,7 @@
         </div>
         <!-- 非表示 -->
 
+      <div v-show="isDisplay">
         <p>
           カメラに✌️サインを向けてください。
         <br>
@@ -48,9 +63,7 @@
           </v-btn>
         </div>
 
-        <!--------
-          カメラ
-        --------->
+        <!-- カメラ -->
         <v-row justify="center">
 
           <!-- 測定 -->
@@ -103,9 +116,7 @@
           ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
 
-        <!------
-          登録
-        ------->
+        <!-- 登録 -->
         <h1 class="font-weight-bold mb-3 mt-12">
           <span class="bgc">登録する</span>
         </h1>
@@ -158,6 +169,7 @@
           />
 
         </div>
+      </div>
       </v-col>
     </v-row>
   </v-container>
@@ -199,6 +211,8 @@ export default {
       },
       rank: null,
       rankers: null,
+      pushedBtn: false,
+      isDisplay: false
     }
   },
 
@@ -214,6 +228,12 @@ export default {
   },
 
   methods: {
+    // カメラON
+    disp() {
+      this.pushedBtn = true,
+      this.isDisplay = true
+    },
+
     // 反映モーダル
     openRegister() {
       this.showRegister = true
@@ -269,7 +289,7 @@ export default {
      canvas.drawImage(video, 0, 0, 300, 300);
     },
     // MediaPipe設定
-    init() {
+    cameraStart() {
 
       const hands = new Hands({
         locateFile: (file) => {

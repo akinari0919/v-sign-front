@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row class="text-center mb-3">
+    <v-row class="text-center">
       <v-col cols="12">
         <transition name="fade"
                     appear
@@ -46,9 +46,6 @@
       <v-col cols="12">
         <p>
           ピースサインの指が開く角度で競い合ってみるサービスです。
-          <br>
-          <br>
-          <span style="color:#CC0033">** カメラの使用をONにしてご利用ください **</span>
         </p>
       </v-col>
     </v-row>
