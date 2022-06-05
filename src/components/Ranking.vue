@@ -62,7 +62,7 @@
                 </v-col>
                 <v-col>
                   <!-- なぜかResultのstyleが適用される -->
-                  <v-card class="width150 mb-3" >
+                  <v-card class="width155 mb-3" >
                     <img class="mt-2"
                        :src="sign.image"
                        width="140"
@@ -92,9 +92,9 @@
       </v-row>
     </v-container>
 
-  </template>
+</template>
 
-  <script>
+<script>
   import axios from 'axios';
   const url = process.env.VUE_APP_API_URL || 'https://v-sign-api.herokuapp.com';
 
@@ -146,8 +146,8 @@
   margin: auto;
 }
 
-width150 {
-  width: 300px;
+.width155 {
+  width: 155px;
   margin: 0 auto;
 }
 

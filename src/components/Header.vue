@@ -173,4 +173,8 @@ h1 {
 .logo-btn:hover {
   background-color: #333333;
 }
+
+@media (max-width: 768px) {
+
+}
 </style>

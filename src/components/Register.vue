@@ -16,7 +16,7 @@
       <v-row justify="center">
         <v-card class="card-img">
           <div class="width300 mt-1">
-            <img class="my-3"
+            <img class="my-3 mr-5"
                  :src="item.image"
                  width="300"
                  height="300"
@@ -33,12 +33,11 @@
         </h2>
       </v-row>
 
-      <v-row class="width300 mb-3"
+      <v-row class="my-7"
              justify="center"
       >
-        <v-col>
           <v-btn
-            class="width180"
+            class="mr-8"
             :disabled="!item.done"
             @click="$emit('register')"
           >
@@ -47,11 +46,9 @@
             </v-icon>
             登録
           </v-btn>
-        </v-col>
 
-        <v-col>
           <v-btn
-            class="width180"
+            class="ml-8"
             @click="$emit('close')"
           >
             <v-icon>
@@ -59,7 +56,6 @@
             </v-icon>
             戻る
           </v-btn>
-        </v-col>
       </v-row>
     </div>
   </div>
@@ -71,7 +67,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #overlay{
   z-index:1;
   position:fixed;
@@ -100,6 +96,10 @@ export default {
   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
 }
 
+img {
+  margin-left: 15px;
+}
+
 .card-img {
   width: 330px;
 }
@@ -109,7 +109,6 @@ export default {
   margin: 0 auto;
 }
 
-/* TODO:写真位置の修正  */
 @media (max-width: 768px) {
   #content {
     width: 90%;
@@ -124,6 +123,7 @@ export default {
   }
 
   img {
+    margin: 0;
     height: 150px;
     width: 150px;
   }
@@ -135,6 +135,5 @@ export default {
   .width180 {
     width: 180px;
   }
-
 }
 </style>

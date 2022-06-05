@@ -1,11 +1,8 @@
 <template>
   <v-container>
     <v-row class="text-center mb-4">
-      <v-col class="mb-3">
-
-        <!------
-          測定
-        ------->
+      <v-col>
+        <!-- 測定 -->
         <h1 class="font-weight-bold mb-3 mt-12">
           <span class="bgc">測定する</span>
         </h1>
@@ -14,14 +11,41 @@
           Measure
         </p>
 
+        <p style="color:#CC0033"
+           v-show="!isDisplay">
+          ** カメラの使用をONにしてご利用ください **
+        </p>
+
+        <v-btn @click="cameraStart"
+               :disabled="pushedBtn"
+               v-on:click="disp"
+               v-show="!isDisplay"
+               class="mb-7"
+        >
+          <v-icon>
+            mdi-camera
+          </v-icon>
+          カメラの使用をONにする
+        </v-btn>
+
         <!-- 非表示 -->
-        <video
-          id="video"
-          class="input_video"
-          ref="input_video"
-        />
+        <div class="input_video">
+          <p>〜カメラメンテナンス中により表示してます〜</p>
+          <video ref="video" autoplay playsinline width="300" height="300"/>
+          <div>
+            <button v-on:click="capture()">Snap Photo</button>
+          </div>
+          <canvas id="canvass" width="300" height="300"/>
+
+          <video
+            id="video"
+            class="input_video"
+            ref="input_video"
+          />
+        </div>
         <!-- 非表示 -->
 
+      <div v-show="isDisplay">
         <p>
           カメラに✌️サインを向けてください。
         <br>
@@ -39,9 +63,7 @@
           </v-btn>
         </div>
 
-        <!--------
-          カメラ
-        --------->
+        <!-- カメラ -->
         <v-row justify="center">
 
           <!-- 測定 -->
@@ -94,9 +116,7 @@
           ** 手の全体をカメラに収め、正面を向けると反応しやすいです **
         </p>
 
-        <!------
-          登録
-        ------->
+        <!-- 登録 -->
         <h1 class="font-weight-bold mb-3 mt-12">
           <span class="bgc">登録する</span>
         </h1>
@@ -149,6 +169,7 @@
           />
 
         </div>
+      </div>
       </v-col>
     </v-row>
   </v-container>
@@ -190,12 +211,14 @@ export default {
       },
       rank: null,
       rankers: null,
+      pushedBtn: false,
+      isDisplay: false
     }
   },
 
   computed: {
     inputVideo() {
-      return this.$refs.input_video;
+      return this.$refs.video;
     },
   },
 
@@ -205,6 +228,12 @@ export default {
   },
 
   methods: {
+    // カメラON
+    disp() {
+      this.pushedBtn = true,
+      this.isDisplay = true
+    },
+
     // 反映モーダル
     openRegister() {
       this.showRegister = true
@@ -253,19 +282,28 @@ export default {
       this.showResult = true
     },
 
+
+    capture () {
+     const video = this.$refs.video;
+     const canvas = document.getElementById("canvass").getContext("2d");
+     canvas.drawImage(video, 0, 0, 300, 300);
+    },
     // MediaPipe設定
-    init() {
+    cameraStart() {
+
       const hands = new Hands({
         locateFile: (file) => {
           return `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`;
         },
       });
+
       hands.setOptions({
         maxNumHands: 1,
         modelComplexity: 1,
         minDetectionConfidence: 0.5,
         minTrackingConfidence: 0.5,
       });
+
       hands.onResults(this.onResults);
 
       const camera = new Camera(this.inputVideo, {
@@ -273,15 +311,30 @@ export default {
           await hands.send({ image: this.inputVideo });
         },
         width: 300,
-        height: 300
+        height: 300,
       });
       camera.start();
+
+      const video = this.$refs.video;
+      const constraints = new Camera(this.inputVideo, {
+        onFrame: async () => {
+          await hands.send({ image: this.inputVideo });
+        },
+        width: 300,
+        height: 300,
+      });
+
+      navigator.mediaDevices.getUserMedia(constraints)
+      .then(stream => {
+        video.srcObject = stream;
+        video.play()
+      });
     },
 
     // 描画設定
     onResults(results) {
-      this.width = results.image.width;
-      this.height = results.image.height;
+      this.width = 300;
+      this.height = 300;
       this.ctx.save();
       this.ctx.clearRect(0, 0, results.image.width, results.image.height);
       this.ctx.drawImage(
@@ -293,6 +346,14 @@ export default {
       );
       this.findHands(results);
       this.ctx.restore();
+
+      const video = this.$refs.video;
+      const canvas = document.getElementById("canvass").getContext("2d");
+      canvas.save();
+      canvas.clearRect(0, 0, 300, 300);
+      canvas.drawImage(video, 0, 0, 300, 300);
+      this.findHands(results);
+      canvas.restore();
     },
 
     // リセット
@@ -373,6 +434,16 @@ export default {
             this.ctx.lineTo(middleX, middleY)
             this.ctx.stroke()
 
+            // 描画
+            const canvas = document.getElementById("canvass").getContext("2d");
+            canvas.lineWidth = 10
+            canvas.strokeStyle = '#ff0'
+            canvas.beginPath()
+            canvas.moveTo(indexX, indexY)
+            canvas.lineTo(mcpX, mcpY)
+            canvas.lineTo(middleX, middleY)
+            canvas.stroke()
+
 
             // 角度算出
             const ba0 = indexX - mcpX
@@ -397,14 +468,14 @@ export default {
           }
         }
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
 .input_video {
-  display: none;
+ display: none;
 }
 
 .output_canvas {
