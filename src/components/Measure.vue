@@ -446,15 +446,15 @@ export default {
 
 
             // 角度算出
-            const ba0 = indexX - mcpX
-            const ba1 = indexY - mcpY
-            const bc0 = middleX - mcpX
-            const bc1 = middleY - mcpY
-            const babc = ba0 * bc0 + ba1 * bc1
-            const ban = (ba0 * ba0) + (ba1 * ba1)
-            const bcn = (bc0 * bc0) + (bc1 * bc1)
-            const radian = Math.acos(babc / (Math.sqrt(ban * bcn)))
-            const angle = radian * 180 / Math.PI
+            const a = {x: indexX, y: indexY}
+            const b = {x: mcpX, y: mcpY}
+            const c = {x: middleX, y: middleY}
+
+            const d0 = (Math.atan2(b.x - a.x, b.y - a.y) -
+                        Math.atan2(b.x - c.x, b.y - c.y)) * 180 / Math.PI
+            const d1 = (360 + d0) % 360 // ∠ABC
+            const angle = d1 > 180 ? 360 - d1 : d1 // 180度を境に小さいほうの角度
+
             this.$set(this.check, 'angle', angle)
             this.item.done = true
 
