@@ -444,7 +444,6 @@ export default {
             canvas.lineTo(middleX, middleY)
             canvas.stroke()
 
-
             // 角度算出
             const a = {x: indexX, y: indexY}
             const b = {x: mcpX, y: mcpY}
@@ -481,6 +480,7 @@ export default {
 .output_canvas {
   width: 300px;
   height: 300px;
+  transform: scale(-1, 1);
 }
 
 .width300 {
